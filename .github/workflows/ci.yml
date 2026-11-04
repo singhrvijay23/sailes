@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U postgres" --health-interval 5s --health-timeout 5s --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Create database roles
+        run: psql postgres://postgres:postgres@localhost:5432/postgres -f infra/db-init.sql
+      - run: pnpm -r typecheck
+      - run: pnpm --filter @sailes/widget build
+      - run: pnpm --filter @sailes/api test
+        env:
+          TEST_DATABASE_URL: postgres://sailes:sailes@localhost:5432/sailes_test
+      - run: pnpm --filter @sailes/console build

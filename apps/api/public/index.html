@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SAILES demo store</title>
+  <style>
+    body { margin: 0; font-family: Georgia, serif; background: #faf8f4; color: #222; }
+    header { padding: 18px 32px; border-bottom: 1px solid #e6e1d8; display: flex; justify-content: space-between; align-items: center; }
+    header b { font-size: 22px; }
+    main { max-width: 960px; margin: 40px auto; padding: 0 16px; }
+    .hero { background: #ece6da; padding: 48px 32px; border-radius: 12px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-top: 32px; }
+    .grid div { background: #fff; height: 160px; border-radius: 8px; border: 1px solid #e6e1d8; }
+    code { background: #fff; padding: 2px 6px; border-radius: 4px; }
+    #log { position: fixed; left: 16px; bottom: 16px; background: #222; color: #9fe; font: 12px monospace; padding: 8px 10px; border-radius: 6px; max-width: 360px; display: none; }
+  </style>
+</head>
+<body>
+  <header><b id="name">Demo store</b><span>Cart (<span id="cart">0</span>)</span></header>
+  <main>
+    <section class="hero">
+      <h1>This is a pretend storefront</h1>
+      <p>The SAILES chat bubble in the corner is the real widget, loaded with one script tag. Change the store with <code>?key=pk_demo_gifts</code> or <code>?key=pk_demo_apparel</code>.</p>
+    </section>
+    <div class="grid"><div></div><div></div><div></div><div></div></div>
+  </main>
+  <div id="log"></div>
+  <script>
+    const key = new URLSearchParams(location.search).get('key') || 'pk_demo_wellness';
+    document.getElementById('name').textContent = { pk_demo_wellness: 'PeakForm Nutrition', pk_demo_gifts: 'Wrapped & Ready Gifts', pk_demo_apparel: 'Northline Outdoor' }[key] || 'Your store';
+    // A platform connector would add the product to the real cart here.
+    let n = 0;
+    window.addEventListener('sailes:add-to-cart', (e) => {
+      e.preventDefault();
+      document.getElementById('cart').textContent = ++n;
+      const log = document.getElementById('log');
+      log.style.display = 'block';
+      log.textContent = 'sailes:add-to-cart ' + e.detail.productId;
+    });
+    const s = document.createElement('script');
+    s.src = '/widget/sailes.js';
+    s.dataset.sailesKey = key;
+    // ?inline=1 renders the chat full-size (used by the console's test chat).
+    if (new URLSearchParams(location.search).get('inline') === '1') {
+      document.querySelector('header').remove();
+      document.querySelector('main').innerHTML = '<div id="sailes-chat"></div>';
+      document.querySelector('main').style.margin = '0';
+      document.querySelector('main').style.padding = '0';
+      document.querySelector('main').style.maxWidth = 'none';
+      s.dataset.mode = 'inline';
+      s.dataset.target = '#sailes-chat';
+    }
+    s.async = true;
+    document.body.appendChild(s);
+  </script>
+</body>
+</html>

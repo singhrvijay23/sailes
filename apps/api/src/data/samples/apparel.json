@@ -1,0 +1,1136 @@
+{
+ "store": {
+  "name": "Northline Outdoor (demo)",
+  "description": "running and outdoor apparel"
+ },
+ "policies": {
+  "shipping": "Free standard shipping in the US (4 to 6 business days). Express shipping is $15.",
+  "returns": "Free returns and exchanges within 60 days, unworn with tags."
+ },
+ "products": [
+  {
+   "id": "APP-001",
+   "title": "Trail Runner X Women's Running Shoe",
+   "brand": "Northline",
+   "description": "Trail shoe with cushioned midsole and grippy outsole. Waterproof membrane keeps feet dry.",
+   "categories": [
+    "Footwear",
+    "Running"
+   ],
+   "tags": [
+    "shoes",
+    "trail",
+    "women"
+   ],
+   "price": 129,
+   "in_stock": true,
+   "rating": 4.4,
+   "review_count": 484,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Trail+Runner+X",
+   "url": "https://demo-apparel.example/products/app-001",
+   "attributes": {
+    "gender": "women",
+    "terrain": "trail",
+    "waterproof": "yes",
+    "color": "navy",
+    "sizes": "5-11"
+   },
+   "variants": [
+    {
+     "size": 5,
+     "in_stock": true
+    },
+    {
+     "size": 6,
+     "in_stock": true
+    },
+    {
+     "size": 7,
+     "in_stock": false
+    },
+    {
+     "size": 8,
+     "in_stock": true
+    },
+    {
+     "size": 9,
+     "in_stock": false
+    },
+    {
+     "size": 10,
+     "in_stock": true
+    },
+    {
+     "size": 11,
+     "in_stock": true
+    }
+   ]
+  },
+  {
+   "id": "APP-002",
+   "title": "Trail Runner X Men's Running Shoe",
+   "brand": "Northline",
+   "description": "Trail shoe with cushioned midsole and grippy outsole. Waterproof membrane keeps feet dry.",
+   "categories": [
+    "Footwear",
+    "Running"
+   ],
+   "tags": [
+    "shoes",
+    "trail",
+    "men"
+   ],
+   "price": 129,
+   "in_stock": true,
+   "rating": 3.7,
+   "review_count": 775,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Trail+Runner+X",
+   "url": "https://demo-apparel.example/products/app-002",
+   "attributes": {
+    "gender": "men",
+    "terrain": "trail",
+    "waterproof": "yes",
+    "color": "navy",
+    "sizes": "7-14"
+   },
+   "variants": [
+    {
+     "size": 7,
+     "in_stock": true
+    },
+    {
+     "size": 8,
+     "in_stock": true
+    },
+    {
+     "size": 9,
+     "in_stock": true
+    },
+    {
+     "size": 10,
+     "in_stock": true
+    },
+    {
+     "size": 11,
+     "in_stock": true
+    },
+    {
+     "size": 12,
+     "in_stock": true
+    },
+    {
+     "size": 13,
+     "in_stock": true
+    },
+    {
+     "size": 14,
+     "in_stock": true
+    }
+   ]
+  },
+  {
+   "id": "APP-003",
+   "title": "Road Glide 3 Women's Running Shoe",
+   "brand": "Northline",
+   "description": "Road shoe with cushioned midsole and grippy outsole. Breathable mesh upper.",
+   "categories": [
+    "Footwear",
+    "Running"
+   ],
+   "tags": [
+    "shoes",
+    "road",
+    "women"
+   ],
+   "price": 119,
+   "in_stock": true,
+   "rating": 3.8,
+   "review_count": 765,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Road+Glide+3",
+   "url": "https://demo-apparel.example/products/app-003",
+   "attributes": {
+    "gender": "women",
+    "terrain": "road",
+    "waterproof": "no",
+    "color": "grey",
+    "sizes": "5-11"
+   },
+   "variants": [
+    {
+     "size": 5,
+     "in_stock": true
+    },
+    {
+     "size": 6,
+     "in_stock": true
+    },
+    {
+     "size": 7,
+     "in_stock": true
+    },
+    {
+     "size": 8,
+     "in_stock": true
+    },
+    {
+     "size": 9,
+     "in_stock": true
+    },
+    {
+     "size": 10,
+     "in_stock": false
+    },
+    {
+     "size": 11,
+     "in_stock": false
+    }
+   ]
+  },
+  {
+   "id": "APP-004",
+   "title": "Road Glide 3 Men's Running Shoe",
+   "brand": "Northline",
+   "description": "Road shoe with cushioned midsole and grippy outsole. Breathable mesh upper.",
+   "categories": [
+    "Footwear",
+    "Running"
+   ],
+   "tags": [
+    "shoes",
+    "road",
+    "men"
+   ],
+   "price": 119,
+   "in_stock": true,
+   "rating": 4.3,
+   "review_count": 458,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Road+Glide+3",
+   "url": "https://demo-apparel.example/products/app-004",
+   "attributes": {
+    "gender": "men",
+    "terrain": "road",
+    "waterproof": "no",
+    "color": "navy",
+    "sizes": "7-14"
+   },
+   "variants": [
+    {
+     "size": 7,
+     "in_stock": true
+    },
+    {
+     "size": 8,
+     "in_stock": false
+    },
+    {
+     "size": 9,
+     "in_stock": false
+    },
+    {
+     "size": 10,
+     "in_stock": true
+    },
+    {
+     "size": 11,
+     "in_stock": false
+    },
+    {
+     "size": 12,
+     "in_stock": false
+    },
+    {
+     "size": 13,
+     "in_stock": true
+    },
+    {
+     "size": 14,
+     "in_stock": true
+    }
+   ]
+  },
+  {
+   "id": "APP-005",
+   "title": "Daily Trainer Women's Running Shoe",
+   "brand": "Northline",
+   "description": "Road shoe with cushioned midsole and grippy outsole. Breathable mesh upper.",
+   "categories": [
+    "Footwear",
+    "Running"
+   ],
+   "tags": [
+    "shoes",
+    "road",
+    "women"
+   ],
+   "price": 89,
+   "in_stock": true,
+   "rating": 4.2,
+   "review_count": 803,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Daily+Trainer",
+   "url": "https://demo-apparel.example/products/app-005",
+   "attributes": {
+    "gender": "women",
+    "terrain": "road",
+    "waterproof": "no",
+    "color": "black",
+    "sizes": "5-11"
+   },
+   "variants": [
+    {
+     "size": 5,
+     "in_stock": false
+    },
+    {
+     "size": 6,
+     "in_stock": false
+    },
+    {
+     "size": 7,
+     "in_stock": false
+    },
+    {
+     "size": 8,
+     "in_stock": false
+    },
+    {
+     "size": 9,
+     "in_stock": true
+    },
+    {
+     "size": 10,
+     "in_stock": false
+    },
+    {
+     "size": 11,
+     "in_stock": true
+    }
+   ]
+  },
+  {
+   "id": "APP-006",
+   "title": "Daily Trainer Men's Running Shoe",
+   "brand": "Northline",
+   "description": "Road shoe with cushioned midsole and grippy outsole. Breathable mesh upper.",
+   "categories": [
+    "Footwear",
+    "Running"
+   ],
+   "tags": [
+    "shoes",
+    "road",
+    "men"
+   ],
+   "price": 89,
+   "in_stock": true,
+   "rating": 3.7,
+   "review_count": 341,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Daily+Trainer",
+   "url": "https://demo-apparel.example/products/app-006",
+   "attributes": {
+    "gender": "men",
+    "terrain": "road",
+    "waterproof": "no",
+    "color": "white",
+    "sizes": "7-14"
+   },
+   "variants": [
+    {
+     "size": 7,
+     "in_stock": true
+    },
+    {
+     "size": 8,
+     "in_stock": false
+    },
+    {
+     "size": 9,
+     "in_stock": true
+    },
+    {
+     "size": 10,
+     "in_stock": true
+    },
+    {
+     "size": 11,
+     "in_stock": true
+    },
+    {
+     "size": 12,
+     "in_stock": true
+    },
+    {
+     "size": 13,
+     "in_stock": true
+    },
+    {
+     "size": 14,
+     "in_stock": true
+    }
+   ]
+  },
+  {
+   "id": "APP-007",
+   "title": "Summit Hiker Mid Women's Hiking Boot",
+   "brand": "Northline",
+   "description": "Hiking boot with cushioned midsole and grippy outsole. Waterproof membrane keeps feet dry.",
+   "categories": [
+    "Footwear",
+    "Hiking"
+   ],
+   "tags": [
+    "shoes",
+    "hiking",
+    "women"
+   ],
+   "price": 149,
+   "in_stock": true,
+   "rating": 4.7,
+   "review_count": 273,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Summit+Hiker+Mid",
+   "url": "https://demo-apparel.example/products/app-007",
+   "attributes": {
+    "gender": "women",
+    "terrain": "hiking",
+    "waterproof": "yes",
+    "color": "white",
+    "sizes": "5-11"
+   },
+   "variants": [
+    {
+     "size": 5,
+     "in_stock": true
+    },
+    {
+     "size": 6,
+     "in_stock": true
+    },
+    {
+     "size": 7,
+     "in_stock": true
+    },
+    {
+     "size": 8,
+     "in_stock": true
+    },
+    {
+     "size": 9,
+     "in_stock": true
+    },
+    {
+     "size": 10,
+     "in_stock": true
+    },
+    {
+     "size": 11,
+     "in_stock": true
+    }
+   ]
+  },
+  {
+   "id": "APP-008",
+   "title": "Summit Hiker Mid Men's Hiking Boot",
+   "brand": "Northline",
+   "description": "Hiking boot with cushioned midsole and grippy outsole. Waterproof membrane keeps feet dry.",
+   "categories": [
+    "Footwear",
+    "Hiking"
+   ],
+   "tags": [
+    "shoes",
+    "hiking",
+    "men"
+   ],
+   "price": 149,
+   "in_stock": true,
+   "rating": 4.0,
+   "review_count": 133,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Summit+Hiker+Mid",
+   "url": "https://demo-apparel.example/products/app-008",
+   "attributes": {
+    "gender": "men",
+    "terrain": "hiking",
+    "waterproof": "yes",
+    "color": "navy",
+    "sizes": "7-14"
+   },
+   "variants": [
+    {
+     "size": 7,
+     "in_stock": true
+    },
+    {
+     "size": 8,
+     "in_stock": true
+    },
+    {
+     "size": 9,
+     "in_stock": false
+    },
+    {
+     "size": 10,
+     "in_stock": true
+    },
+    {
+     "size": 11,
+     "in_stock": true
+    },
+    {
+     "size": 12,
+     "in_stock": false
+    },
+    {
+     "size": 13,
+     "in_stock": true
+    },
+    {
+     "size": 14,
+     "in_stock": false
+    }
+   ]
+  },
+  {
+   "id": "APP-009",
+   "title": "Featherlight Racer Women's Running Shoe",
+   "brand": "Northline",
+   "description": "Road shoe with cushioned midsole and grippy outsole. Breathable mesh upper.",
+   "categories": [
+    "Footwear",
+    "Running"
+   ],
+   "tags": [
+    "shoes",
+    "road",
+    "women"
+   ],
+   "price": 159,
+   "in_stock": true,
+   "rating": 4.5,
+   "review_count": 237,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Featherlight+Racer",
+   "url": "https://demo-apparel.example/products/app-009",
+   "attributes": {
+    "gender": "women",
+    "terrain": "road",
+    "waterproof": "no",
+    "color": "navy",
+    "sizes": "5-11"
+   },
+   "variants": [
+    {
+     "size": 5,
+     "in_stock": true
+    },
+    {
+     "size": 6,
+     "in_stock": true
+    },
+    {
+     "size": 7,
+     "in_stock": true
+    },
+    {
+     "size": 8,
+     "in_stock": true
+    },
+    {
+     "size": 9,
+     "in_stock": false
+    },
+    {
+     "size": 10,
+     "in_stock": true
+    },
+    {
+     "size": 11,
+     "in_stock": true
+    }
+   ]
+  },
+  {
+   "id": "APP-010",
+   "title": "Featherlight Racer Men's Running Shoe",
+   "brand": "Northline",
+   "description": "Road shoe with cushioned midsole and grippy outsole. Breathable mesh upper.",
+   "categories": [
+    "Footwear",
+    "Running"
+   ],
+   "tags": [
+    "shoes",
+    "road",
+    "men"
+   ],
+   "price": 159,
+   "in_stock": true,
+   "rating": 4.2,
+   "review_count": 728,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Featherlight+Racer",
+   "url": "https://demo-apparel.example/products/app-010",
+   "attributes": {
+    "gender": "men",
+    "terrain": "road",
+    "waterproof": "no",
+    "color": "black",
+    "sizes": "7-14"
+   },
+   "variants": [
+    {
+     "size": 7,
+     "in_stock": true
+    },
+    {
+     "size": 8,
+     "in_stock": true
+    },
+    {
+     "size": 9,
+     "in_stock": true
+    },
+    {
+     "size": 10,
+     "in_stock": false
+    },
+    {
+     "size": 11,
+     "in_stock": true
+    },
+    {
+     "size": 12,
+     "in_stock": true
+    },
+    {
+     "size": 13,
+     "in_stock": true
+    },
+    {
+     "size": 14,
+     "in_stock": false
+    }
+   ]
+  },
+  {
+   "id": "APP-011",
+   "title": "Merino Base Layer Tee - Women",
+   "brand": "Northline",
+   "description": "Merino Base Layer Tee made from merino wool. Comfortable fit for training and everyday wear.",
+   "categories": [
+    "Tops",
+    "Clothing"
+   ],
+   "tags": [
+    "clothing",
+    "tops",
+    "women"
+   ],
+   "price": 65,
+   "in_stock": true,
+   "rating": 4.0,
+   "review_count": 805,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Merino+Base+Layer+Tee",
+   "url": "https://demo-apparel.example/products/app-011",
+   "attributes": {
+    "gender": "women",
+    "material": "merino wool",
+    "color": "navy"
+   }
+  },
+  {
+   "id": "APP-012",
+   "title": "Merino Base Layer Tee - Men",
+   "brand": "Northline",
+   "description": "Merino Base Layer Tee made from merino wool. Comfortable fit for training and everyday wear.",
+   "categories": [
+    "Tops",
+    "Clothing"
+   ],
+   "tags": [
+    "clothing",
+    "tops",
+    "men"
+   ],
+   "price": 65,
+   "in_stock": true,
+   "rating": 3.8,
+   "review_count": 440,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Merino+Base+Layer+Tee",
+   "url": "https://demo-apparel.example/products/app-012",
+   "attributes": {
+    "gender": "men",
+    "material": "merino wool",
+    "color": "olive"
+   }
+  },
+  {
+   "id": "APP-013",
+   "title": "Everyday Cotton Tee - Women",
+   "brand": "Northline",
+   "description": "Everyday Cotton Tee made from cotton. Comfortable fit for training and everyday wear.",
+   "categories": [
+    "Tops",
+    "Clothing"
+   ],
+   "tags": [
+    "clothing",
+    "tops",
+    "women"
+   ],
+   "price": 25,
+   "in_stock": true,
+   "rating": 4.3,
+   "review_count": 535,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Everyday+Cotton+Tee",
+   "url": "https://demo-apparel.example/products/app-013",
+   "attributes": {
+    "gender": "women",
+    "material": "cotton",
+    "color": "sand"
+   }
+  },
+  {
+   "id": "APP-014",
+   "title": "Everyday Cotton Tee - Men",
+   "brand": "Northline",
+   "description": "Everyday Cotton Tee made from cotton. Comfortable fit for training and everyday wear.",
+   "categories": [
+    "Tops",
+    "Clothing"
+   ],
+   "tags": [
+    "clothing",
+    "tops",
+    "men"
+   ],
+   "price": 25,
+   "in_stock": true,
+   "rating": 4.0,
+   "review_count": 293,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Everyday+Cotton+Tee",
+   "url": "https://demo-apparel.example/products/app-014",
+   "attributes": {
+    "gender": "men",
+    "material": "cotton",
+    "color": "black"
+   }
+  },
+  {
+   "id": "APP-015",
+   "title": "Quick-Dry Running Tee - Women",
+   "brand": "Northline",
+   "description": "Quick-Dry Running Tee made from polyester. Comfortable fit for training and everyday wear.",
+   "categories": [
+    "Tops",
+    "Clothing"
+   ],
+   "tags": [
+    "clothing",
+    "tops",
+    "women"
+   ],
+   "price": 35,
+   "in_stock": true,
+   "rating": 3.8,
+   "review_count": 82,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Quick-Dry+Running+Tee",
+   "url": "https://demo-apparel.example/products/app-015",
+   "attributes": {
+    "gender": "women",
+    "material": "polyester",
+    "color": "olive"
+   }
+  },
+  {
+   "id": "APP-016",
+   "title": "Quick-Dry Running Tee - Men",
+   "brand": "Northline",
+   "description": "Quick-Dry Running Tee made from polyester. Comfortable fit for training and everyday wear.",
+   "categories": [
+    "Tops",
+    "Clothing"
+   ],
+   "tags": [
+    "clothing",
+    "tops",
+    "men"
+   ],
+   "price": 35,
+   "in_stock": false,
+   "rating": 4.4,
+   "review_count": 828,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Quick-Dry+Running+Tee",
+   "url": "https://demo-apparel.example/products/app-016",
+   "attributes": {
+    "gender": "men",
+    "material": "polyester",
+    "color": "olive"
+   }
+  },
+  {
+   "id": "APP-017",
+   "title": "Fleece Hoodie - Women",
+   "brand": "Northline",
+   "description": "Fleece Hoodie made from fleece. Comfortable fit for training and everyday wear.",
+   "categories": [
+    "Hoodies",
+    "Clothing"
+   ],
+   "tags": [
+    "clothing",
+    "hoodies",
+    "women"
+   ],
+   "price": 70,
+   "in_stock": true,
+   "rating": 4.7,
+   "review_count": 76,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Fleece+Hoodie",
+   "url": "https://demo-apparel.example/products/app-017",
+   "attributes": {
+    "gender": "women",
+    "material": "fleece",
+    "color": "olive"
+   }
+  },
+  {
+   "id": "APP-018",
+   "title": "Fleece Hoodie - Men",
+   "brand": "Northline",
+   "description": "Fleece Hoodie made from fleece. Comfortable fit for training and everyday wear.",
+   "categories": [
+    "Hoodies",
+    "Clothing"
+   ],
+   "tags": [
+    "clothing",
+    "hoodies",
+    "men"
+   ],
+   "price": 70,
+   "in_stock": true,
+   "rating": 4.2,
+   "review_count": 355,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Fleece+Hoodie",
+   "url": "https://demo-apparel.example/products/app-018",
+   "attributes": {
+    "gender": "men",
+    "material": "fleece",
+    "color": "sand"
+   }
+  },
+  {
+   "id": "APP-019",
+   "title": "Organic Cotton Hoodie - Women",
+   "brand": "Northline",
+   "description": "Organic Cotton Hoodie made from organic cotton. Comfortable fit for training and everyday wear.",
+   "categories": [
+    "Hoodies",
+    "Clothing"
+   ],
+   "tags": [
+    "clothing",
+    "hoodies",
+    "women"
+   ],
+   "price": 80,
+   "in_stock": false,
+   "rating": 4.8,
+   "review_count": 644,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Organic+Cotton+Hoodie",
+   "url": "https://demo-apparel.example/products/app-019",
+   "attributes": {
+    "gender": "women",
+    "material": "organic cotton",
+    "color": "navy"
+   }
+  },
+  {
+   "id": "APP-020",
+   "title": "Organic Cotton Hoodie - Men",
+   "brand": "Northline",
+   "description": "Organic Cotton Hoodie made from organic cotton. Comfortable fit for training and everyday wear.",
+   "categories": [
+    "Hoodies",
+    "Clothing"
+   ],
+   "tags": [
+    "clothing",
+    "hoodies",
+    "men"
+   ],
+   "price": 80,
+   "in_stock": true,
+   "rating": 4.5,
+   "review_count": 120,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Organic+Cotton+Hoodie",
+   "url": "https://demo-apparel.example/products/app-020",
+   "attributes": {
+    "gender": "men",
+    "material": "organic cotton",
+    "color": "navy"
+   }
+  },
+  {
+   "id": "APP-021",
+   "title": "Packable Rain Jacket - Women",
+   "brand": "Northline",
+   "description": "Packable Rain Jacket made from nylon. Comfortable fit for training and everyday wear.",
+   "categories": [
+    "Jackets",
+    "Clothing"
+   ],
+   "tags": [
+    "clothing",
+    "jackets",
+    "women"
+   ],
+   "price": 120,
+   "in_stock": true,
+   "rating": 3.8,
+   "review_count": 327,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Packable+Rain+Jacket",
+   "url": "https://demo-apparel.example/products/app-021",
+   "attributes": {
+    "gender": "women",
+    "material": "nylon",
+    "color": "olive",
+    "waterproof": "yes"
+   }
+  },
+  {
+   "id": "APP-022",
+   "title": "Packable Rain Jacket - Men",
+   "brand": "Northline",
+   "description": "Packable Rain Jacket made from nylon. Comfortable fit for training and everyday wear.",
+   "categories": [
+    "Jackets",
+    "Clothing"
+   ],
+   "tags": [
+    "clothing",
+    "jackets",
+    "men"
+   ],
+   "price": 120,
+   "in_stock": true,
+   "rating": 3.9,
+   "review_count": 464,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Packable+Rain+Jacket",
+   "url": "https://demo-apparel.example/products/app-022",
+   "attributes": {
+    "gender": "men",
+    "material": "nylon",
+    "color": "sand",
+    "waterproof": "yes"
+   }
+  },
+  {
+   "id": "APP-023",
+   "title": "Insulated Puffer Jacket - Women",
+   "brand": "Northline",
+   "description": "Insulated Puffer Jacket made from recycled polyester. Comfortable fit for training and everyday wear.",
+   "categories": [
+    "Jackets",
+    "Clothing"
+   ],
+   "tags": [
+    "clothing",
+    "jackets",
+    "women"
+   ],
+   "price": 180,
+   "in_stock": true,
+   "rating": 4.0,
+   "review_count": 830,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Insulated+Puffer+Jacket",
+   "url": "https://demo-apparel.example/products/app-023",
+   "attributes": {
+    "gender": "women",
+    "material": "recycled polyester",
+    "color": "black",
+    "waterproof": "no"
+   }
+  },
+  {
+   "id": "APP-024",
+   "title": "Insulated Puffer Jacket - Men",
+   "brand": "Northline",
+   "description": "Insulated Puffer Jacket made from recycled polyester. Comfortable fit for training and everyday wear.",
+   "categories": [
+    "Jackets",
+    "Clothing"
+   ],
+   "tags": [
+    "clothing",
+    "jackets",
+    "men"
+   ],
+   "price": 180,
+   "in_stock": true,
+   "rating": 3.6,
+   "review_count": 26,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Insulated+Puffer+Jacket",
+   "url": "https://demo-apparel.example/products/app-024",
+   "attributes": {
+    "gender": "men",
+    "material": "recycled polyester",
+    "color": "sand",
+    "waterproof": "no"
+   }
+  },
+  {
+   "id": "APP-025",
+   "title": "Running Shorts 5in - Women",
+   "brand": "Northline",
+   "description": "Running Shorts 5in made from polyester. Comfortable fit for training and everyday wear.",
+   "categories": [
+    "Bottoms",
+    "Clothing"
+   ],
+   "tags": [
+    "clothing",
+    "bottoms",
+    "women"
+   ],
+   "price": 40,
+   "in_stock": true,
+   "rating": 3.8,
+   "review_count": 494,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Running+Shorts+5in",
+   "url": "https://demo-apparel.example/products/app-025",
+   "attributes": {
+    "gender": "women",
+    "material": "polyester",
+    "color": "navy"
+   }
+  },
+  {
+   "id": "APP-026",
+   "title": "Running Shorts 5in - Men",
+   "brand": "Northline",
+   "description": "Running Shorts 5in made from polyester. Comfortable fit for training and everyday wear.",
+   "categories": [
+    "Bottoms",
+    "Clothing"
+   ],
+   "tags": [
+    "clothing",
+    "bottoms",
+    "men"
+   ],
+   "price": 40,
+   "in_stock": true,
+   "rating": 3.7,
+   "review_count": 846,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Running+Shorts+5in",
+   "url": "https://demo-apparel.example/products/app-026",
+   "attributes": {
+    "gender": "men",
+    "material": "polyester",
+    "color": "heather grey"
+   }
+  },
+  {
+   "id": "APP-027",
+   "title": "Jogger Pants - Women",
+   "brand": "Northline",
+   "description": "Jogger Pants made from cotton blend. Comfortable fit for training and everyday wear.",
+   "categories": [
+    "Bottoms",
+    "Clothing"
+   ],
+   "tags": [
+    "clothing",
+    "bottoms",
+    "women"
+   ],
+   "price": 60,
+   "in_stock": true,
+   "rating": 4.3,
+   "review_count": 410,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Jogger+Pants",
+   "url": "https://demo-apparel.example/products/app-027",
+   "attributes": {
+    "gender": "women",
+    "material": "cotton blend",
+    "color": "sand"
+   }
+  },
+  {
+   "id": "APP-028",
+   "title": "Jogger Pants - Men",
+   "brand": "Northline",
+   "description": "Jogger Pants made from cotton blend. Comfortable fit for training and everyday wear.",
+   "categories": [
+    "Bottoms",
+    "Clothing"
+   ],
+   "tags": [
+    "clothing",
+    "bottoms",
+    "men"
+   ],
+   "price": 60,
+   "in_stock": true,
+   "rating": 3.9,
+   "review_count": 243,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Jogger+Pants",
+   "url": "https://demo-apparel.example/products/app-028",
+   "attributes": {
+    "gender": "men",
+    "material": "cotton blend",
+    "color": "olive"
+   }
+  },
+  {
+   "id": "APP-029",
+   "title": "Cushioned Running Socks 3-Pack",
+   "brand": "Northline",
+   "description": "Cushioned Running Socks 3-Pack made from nylon blend. Comfortable fit for training and everyday wear.",
+   "categories": [
+    "Socks",
+    "Clothing"
+   ],
+   "tags": [
+    "clothing",
+    "socks",
+    "unisex"
+   ],
+   "price": 18,
+   "in_stock": true,
+   "rating": 4.7,
+   "review_count": 754,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Cushioned+Running+Socks+3-Pack",
+   "url": "https://demo-apparel.example/products/app-029",
+   "attributes": {
+    "gender": "unisex",
+    "material": "nylon blend",
+    "color": "navy"
+   }
+  },
+  {
+   "id": "APP-030",
+   "title": "Wool Hiking Socks",
+   "brand": "Northline",
+   "description": "Wool Hiking Socks made from merino wool. Comfortable fit for training and everyday wear.",
+   "categories": [
+    "Socks",
+    "Clothing"
+   ],
+   "tags": [
+    "clothing",
+    "socks",
+    "unisex"
+   ],
+   "price": 22,
+   "in_stock": false,
+   "rating": 4.1,
+   "review_count": 63,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Wool+Hiking+Socks",
+   "url": "https://demo-apparel.example/products/app-030",
+   "attributes": {
+    "gender": "unisex",
+    "material": "merino wool",
+    "color": "navy"
+   }
+  }
+ ]
+}
