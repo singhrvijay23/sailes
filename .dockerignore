@@ -1,0 +1,8 @@
+**/node_modules
+**/dist
+**/.next
+**/*.tsbuildinfo
+.env
+.git
+infra/terraform/.terraform
+infra/terraform/*.tfstate*

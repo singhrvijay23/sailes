@@ -8,6 +8,8 @@ const dir = path.join(path.dirname(fileURLToPath(import.meta.url)), 'migrations'
 export async function migrate(log = console.log) {
   const client = await pool.connect();
   try {
+    // Several API tasks start at once in production: one migrates, the others wait.
+    await client.query('SELECT pg_advisory_lock(727274)');
     await client.query('CREATE TABLE IF NOT EXISTS schema_migrations (name text PRIMARY KEY, applied_at timestamptz DEFAULT now())');
     const done = new Set((await client.query('SELECT name FROM schema_migrations')).rows.map((r) => r.name));
     const files = (await readdir(dir)).filter((f) => f.endsWith('.sql')).sort();
@@ -26,6 +28,7 @@ export async function migrate(log = console.log) {
       }
     }
   } finally {
+    await client.query('SELECT pg_advisory_unlock(727274)').catch(() => {});
     client.release();
   }
 }

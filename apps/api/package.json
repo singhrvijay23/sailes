@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "tsx watch --env-file-if-exists=../../.env src/server.ts",
     "start": "node --env-file-if-exists=../../.env dist/server.js",
-    "build": "tsc -p tsconfig.build.json",
+    "build": "tsc -p tsconfig.build.json && node -e \"require('fs').cpSync('src/db/migrations','dist/db/migrations',{recursive:true})\"",
     "typecheck": "tsc --noEmit",
     "migrate": "tsx --env-file-if-exists=../../.env src/db/migrate.ts",
     "seed": "tsx --env-file-if-exists=../../.env src/scripts/seed.ts",
@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.4.0",
+    "@aws-sdk/client-kms": "^3.1161.0",
     "@fastify/cors": "^11.4.0",
     "@fastify/jwt": "^10.2.7",
     "@fastify/multipart": "^10.1.7",
