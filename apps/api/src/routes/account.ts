@@ -8,6 +8,7 @@ import { hashApiKey, requireStore, requireUser } from '../auth.js';
 import { catalogStats } from '../catalog/service.js';
 import { monthUsage } from '../usage/usage.js';
 import { config } from '../config.js';
+import { TRIAL_DAYS } from '../billing/billing.js';
 
 const Signup = z.object({
   email: z.string().email().max(200).transform((s) => s.toLowerCase().trim()),
@@ -63,8 +64,8 @@ export async function accountRoutes(app: FastifyInstance) {
       const user = (await client.query('INSERT INTO users (email, name, password_hash) VALUES ($1, $2, $3) RETURNING id, email, name', [body.email, body.name ?? null, await hashPassword(body.password)])).rows[0];
       const tenant = (
         await client.query(
-          `INSERT INTO tenants (name, site_url, platform, trial_ends_at, settings) VALUES ($1, $2, $3, now() + interval '14 days', $4) RETURNING id`,
-          [body.storeName, body.siteUrl ?? null, body.platform, { assistantName: `${body.storeName} assistant`, tone: 'friendly', greeting: `Hi! Looking for something at ${body.storeName}? Tell me what you need and I'll find it.`, primaryColor: '#1B2A4A', placement: 'bottom-right' }],
+          `INSERT INTO tenants (name, site_url, platform, trial_ends_at, settings) VALUES ($1, $2, $3, now() + make_interval(days => $5), $4) RETURNING id`,
+          [body.storeName, body.siteUrl ?? null, body.platform, { assistantName: `${body.storeName} assistant`, tone: 'friendly', greeting: `Hi! Looking for something at ${body.storeName}? Tell me what you need and I'll find it.`, primaryColor: '#1B2A4A', placement: 'bottom-right' }, TRIAL_DAYS],
         )
       ).rows[0];
       await client.query(`INSERT INTO memberships (user_id, tenant_id, role) VALUES ($1, $2, 'owner')`, [user.id, tenant.id]);
@@ -121,7 +122,7 @@ export async function accountRoutes(app: FastifyInstance) {
   app.patch('/v1/stores/:storeId', { preHandler: requireStore(['owner', 'admin']) }, async (req) => {
     const body = StorePatch.parse(req.body);
     const { tenantId } = req.store!;
-    if (body.plan && config.isProd) throw badRequest('Change your plan from the billing page');
+    if (body.plan && (config.isProd || config.stripe.secretKey)) throw badRequest('Change your plan from the billing page');
     const cur = (await query('SELECT settings FROM tenants WHERE id = $1', [tenantId])).rows[0];
     await query(
       `UPDATE tenants SET name = coalesce($2, name), site_url = CASE WHEN $3::boolean THEN $4 ELSE site_url END,
