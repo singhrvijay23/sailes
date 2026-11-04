@@ -2,8 +2,8 @@
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-import { api, session } from '@/lib/api';
+import { useEffect, useState } from 'react';
+import { api, nextPath, session } from '@/lib/api';
 import { Notice, errorText } from '@/components/ui';
 import { AuthShell } from '@/components/brand';
 
@@ -12,6 +12,8 @@ export default function SignupPage() {
   const [form, setForm] = useState({ name: '', email: '', password: '', storeName: '', siteUrl: '', platform: 'custom' });
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const [qs, setQs] = useState('');
+  useEffect(() => setQs(window.location.search), []);
   const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => setForm({ ...form, [k]: e.target.value });
 
   async function submit(e: React.FormEvent) {
@@ -22,7 +24,7 @@ export default function SignupPage() {
       const r = await api('/v1/auth/signup', { method: 'POST', json: { ...form, siteUrl: form.siteUrl || undefined } });
       session.token = r.token;
       session.storeId = r.storeId;
-      router.push('/');
+      router.push(nextPath());
     } catch (err) {
       setError(errorText(err));
     } finally {
@@ -68,7 +70,7 @@ export default function SignupPage() {
         </div>
         <button className="btn w-full" disabled={busy}>{busy ? 'Creating your store…' : 'Create account'}</button>
         <p className="muted text-center">
-          Already have an account? <Link className="font-medium text-navy underline" href="/login">Sign in</Link>
+          Already have an account? <Link className="font-medium text-navy underline" href={`/login${qs}`}>Sign in</Link>
         </p>
       </form>
     </AuthShell>

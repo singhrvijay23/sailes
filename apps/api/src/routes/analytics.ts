@@ -84,7 +84,13 @@ export async function analyticsRoutes(app: FastifyInstance) {
   app.post('/v1/stores/:storeId/orders', { preHandler: requireStore(['owner', 'admin', 'connector']) }, async (req) => {
     const o = z.object({ orderId: z.string().max(120), total: z.number().nonnegative(), conversationId: z.string().uuid().nullish(), productIds: z.array(z.string()).max(200).default([]) }).parse(req.body);
     const t = req.store!.tenantId;
-    await withTenant(t, (db) => db.query(`INSERT INTO events (tenant_id, conversation_id, type, value, meta) VALUES ($1, $2, 'order', $3, $4)`, [t, o.conversationId ?? null, o.total, { orderId: o.orderId, productIds: o.productIds }]));
-    return { ok: true };
+    // Platform webhooks retry: an order is recorded once.
+    const inserted = await withTenant(t, async (db) => {
+      const dup = await db.query(`SELECT 1 FROM events WHERE type = 'order' AND meta->>'orderId' = $1 LIMIT 1`, [o.orderId]);
+      if (dup.rowCount) return false;
+      await db.query(`INSERT INTO events (tenant_id, conversation_id, type, value, meta) VALUES ($1, $2, 'order', $3, $4)`, [t, o.conversationId ?? null, o.total, { orderId: o.orderId, productIds: o.productIds }]);
+      return true;
+    });
+    return { ok: true, duplicate: !inserted };
   });
 }
