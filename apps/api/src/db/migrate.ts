@@ -1,12 +1,17 @@
 import { readdir, readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
-import { pool } from './pool.js';
+import pg from 'pg';
+import { config } from '../config.js';
+import { pool, sslOptions } from './pool.js';
 
 const dir = path.join(path.dirname(fileURLToPath(import.meta.url)), 'migrations');
 
 export async function migrate(log = console.log) {
-  const client = await pool.connect();
+  // A plain client, not the pool: pool connections register the pgvector type on connect, which
+  // fails on a fresh database until the first migration has created the extension.
+  const client = new pg.Client({ connectionString: config.databaseUrl, ssl: sslOptions() });
+  await client.connect();
   try {
     // Several API tasks start at once in production: one migrates, the others wait.
     await client.query('SELECT pg_advisory_lock(727274)');
@@ -29,7 +34,7 @@ export async function migrate(log = console.log) {
     }
   } finally {
     await client.query('SELECT pg_advisory_unlock(727274)').catch(() => {});
-    client.release();
+    await client.end();
   }
 }
 
