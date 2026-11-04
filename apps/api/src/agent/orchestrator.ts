@@ -4,6 +4,7 @@ import { createDemoProvider } from '../ai/providers/demo.js';
 import { ProviderError, type ChatProvider, type HistoryTurn } from '../ai/types.js';
 import { loadSearchContext } from '../search/search.js';
 import { monthUsage, recordUsage } from '../usage/usage.js';
+import { activeUpsellRules } from '../upsell/upsell.js';
 import { chargeCredits, creditBalance } from '../billing/billing.js';
 import { estimateCostUsd } from '../ai/pricing.js';
 import { planFor } from '../lib/plans.js';
@@ -98,12 +99,13 @@ export async function handleChat(req: ChatRequest): Promise<ChatOutcome> {
   // 3. Run the agent loop. Each tool call gets its own short tenant-scoped transaction, so no
   //    database connection is held while waiting on the AI provider.
   const ctx = await withTenant(req.tenantId, loadSearchContext);
+  const upsellRules = plan.upsellRules ? await withTenant(req.tenantId, activeUpsellRules) : [];
   const run = (p: ChatProvider) =>
     p.runTurn({
       system,
       history,
       tools: TOOL_SPECS,
-      executeTool: (name, input) => withTenant(req.tenantId, (db) => makeToolExecutor({ db, ctx, provider: p, state, emit: req.emit })(name, input)),
+      executeTool: (name, input) => withTenant(req.tenantId, (db) => makeToolExecutor({ db, ctx, provider: p, state, emit: req.emit, upsellRules })(name, input)),
       onText: (delta) => req.emit('text', { delta }),
       maxRounds: 6,
       signal: req.signal,

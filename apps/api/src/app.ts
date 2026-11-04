@@ -16,6 +16,7 @@ import { catalogRoutes } from './routes/catalog.js';
 import { widgetRoutes } from './routes/widget.js';
 import { analyticsRoutes } from './routes/analytics.js';
 import { billingRoutes } from './routes/billing.js';
+import { upsellRoutes } from './routes/upsell.js';
 import { pool } from './db/pool.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -63,6 +64,7 @@ export async function buildApp(opts: { logger?: boolean } = {}) {
   await app.register(widgetRoutes);
   await app.register(analyticsRoutes);
   await app.register(billingRoutes);
+  await app.register(upsellRoutes);
 
   // Serve the built widget bundle and the demo storefront page.
   const widgetDist = path.resolve(here, '../../widget/dist');

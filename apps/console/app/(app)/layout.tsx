@@ -11,6 +11,7 @@ const NAV = [
   { href: '/ai', label: 'AI connection' },
   { href: '/catalog', label: 'Catalog' },
   { href: '/rules', label: 'Rules & answers' },
+  { href: '/upsell', label: 'Upsell & bundles' },
   { href: '/appearance', label: 'Assistant & look' },
   { href: '/test', label: 'Test chat' },
   { href: '/conversations', label: 'Conversations' },

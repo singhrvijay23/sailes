@@ -145,7 +145,12 @@ export function createDemoProvider(): ChatProvider {
       await say(count === 1 ? 'Here is my top pick for you.' : `Here are my top ${count} picks for you.`);
       const related: any = await input.executeTool('get_related', { product_id: top[0].id });
       const comp = related?.products?.[0];
-      if (comp) await say(` Shoppers who buy the ${top[0].title} often add the ${comp.title} too.`);
+      const bundle = related?.bundles?.[0];
+      const offer = related?.offers?.[0];
+      if (bundle) await say(` It's also part of our ${bundle.name} bundle${bundle.discount ? `: ${bundle.discount}` : ''}.`);
+      else if (comp?.why === 'store recommendation') await say(` We recommend pairing the ${top[0].title} with the ${comp.title}.`);
+      else if (comp) await say(` Shoppers who buy the ${top[0].title} often add the ${comp.title} too.`);
+      if (offer) await say(` Good news: ${offer.text}${offer.code ? ` (use code ${offer.code})` : ''}.`);
       await say(' Would you like me to compare any of these?');
       return done();
     },

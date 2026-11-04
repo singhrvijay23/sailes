@@ -1,3 +1,4 @@
+import { matchUpsells, type UpsellRule } from '../upsell/upsell.js';
 import { z } from 'zod';
 import type { Db } from '../db/pool.js';
 import type { ChatProvider, ToolSpec } from '../ai/types.js';
@@ -142,6 +143,8 @@ export interface ToolDeps {
   provider: ChatProvider;
   state: TurnState;
   emit: (event: string, data: unknown) => void;
+  /** Active merchant upsell rules; empty when the plan has no upsell rules. */
+  upsellRules?: UpsellRule[];
 }
 
 function isExcludedByRule(row: { external_id: string; brand: string | null; categories: string[]; tags: string[] }, rules: MerchRule[]) {
@@ -159,6 +162,14 @@ function isExcludedByRule(row: { external_id: string; brand: string | null; cate
 
 export function makeToolExecutor(deps: ToolDeps) {
   const { db, ctx, provider, state, emit } = deps;
+  const upsellRules = deps.upsellRules ?? [];
+
+  /** Merchant promotions that apply to a product. The assistant may only mention offers returned here. */
+  function offersFor(p: { external_id: string; categories: string[]; tags: string[] } | undefined) {
+    if (!p || !upsellRules.length) return {};
+    const offers = matchUpsells(upsellRules, p).offers.slice(0, 2);
+    return offers.length ? { offers: offers.map((o) => ({ text: o.text, code: o.code, min_cart_value: o.minCartValue })) } : {};
+  }
 
   return async function execute(name: string, rawInput: Record<string, unknown>): Promise<unknown> {
     switch (name) {
@@ -217,6 +228,7 @@ export function makeToolExecutor(deps: ToolDeps) {
           attributes: p.attributes,
           variants: (p.variants ?? []).slice(0, 20),
           description: String(p.description ?? '').slice(0, 1500),
+          ...offersFor(p),
         };
       }
       case 'compare_products': {
@@ -230,10 +242,21 @@ export function makeToolExecutor(deps: ToolDeps) {
       }
       case 'get_related': {
         const { product_id } = IdInput.parse(rawInput);
+        const [anchor] = await getProductsByIds(db, [product_id]);
+        const match = anchor ? matchUpsells(upsellRules, anchor) : null;
+        // Merchant cross-sell rules come first, then complements found from shared tags and categories.
+        const picked: Array<{ row: any; why: string }> = [];
+        if (match?.crossSell.length) {
+          const byId = new Map((await getProductsByIds(db, match.crossSell.map((c) => c.id))).map((r) => [r.external_id, r]));
+          for (const c of match.crossSell) {
+            const r = byId.get(c.id);
+            if (r && r.in_stock && !isExcludedByRule(r, ctx.rules)) picked.push({ row: r, why: 'store recommendation' });
+          }
+        }
         const { rows } = await db.query(
           `WITH a AS (SELECT categories, tags FROM products WHERE external_id = $1)
            SELECT p.external_id, p.title, p.brand, p.price::float AS price, p.in_stock, p.rating::float AS rating, p.review_count,
-                  p.categories, p.tags, p.attributes, left(p.description, 160) AS summary
+                  p.categories, p.tags, p.attributes, left(p.description, 160) AS description
            FROM products p, a
            WHERE p.external_id <> $1 AND p.in_stock AND (p.tags && a.tags OR p.categories && a.categories)
            -- Prefer complements: shares a tag but sits in a different primary category (shaker for a protein powder).
@@ -243,11 +266,38 @@ export function makeToolExecutor(deps: ToolDeps) {
            LIMIT 6`,
           [product_id],
         );
-        const products = rows.filter((r) => !isExcludedByRule(r, ctx.rules)).slice(0, 3);
-        for (const p of products) state.groundedIds.add(p.external_id);
-        return {
-          products: products.map((p) => ({ id: p.external_id, title: p.title, brand: p.brand, price: p.price, rating: p.rating, categories: p.categories, summary: p.summary })),
+        for (const r of rows) {
+          if (picked.length >= 3) break;
+          if (!isExcludedByRule(r, ctx.rules) && !picked.some((x) => x.row.external_id === r.external_id)) picked.push({ row: r, why: 'goes well with it' });
+        }
+        const products = picked.slice(0, 3);
+        for (const { row } of products) state.groundedIds.add(row.external_id);
+
+        const result: Record<string, unknown> = {
+          products: products.map(({ row: p, why }) => ({ id: p.external_id, title: p.title, brand: p.brand, price: p.price, rating: p.rating, categories: p.categories, summary: String(p.description ?? '').slice(0, 160), why })),
         };
+        if (match?.bundles.length) {
+          const all = (await getProductsByIds(db, [...new Set(match.bundles.flatMap((b) => b.productIds))])).filter((r) => !isExcludedByRule(r, ctx.rules));
+          const byId = new Map(all.map((r) => [r.external_id, r]));
+          result.bundles = match.bundles
+            .map((b) => {
+              const items = b.productIds.map((id) => byId.get(id)).filter((r): r is NonNullable<typeof r> => !!r);
+              // A bundle with an item out of stock or missing is not offered.
+              if (items.length !== b.productIds.length || items.some((r) => !r.in_stock)) return null;
+              for (const r of items) state.groundedIds.add(r.external_id);
+              return {
+                name: b.name,
+                products: items.map((r) => ({ id: r.external_id, title: r.title, price: r.price })),
+                total_price: Math.round(items.reduce((sum, r) => sum + Number(r.price), 0) * 100) / 100,
+                discount: b.discountText,
+                code: b.discountCode,
+              };
+            })
+            .filter(Boolean)
+            .slice(0, 2);
+        }
+        Object.assign(result, offersFor(anchor));
+        return result;
       }
       case 'get_policy': {
         const { topic } = PolicyInput.parse(rawInput);
