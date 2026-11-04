@@ -16,6 +16,7 @@ const NAV = [
   { href: '/conversations', label: 'Conversations' },
   { href: '/analytics', label: 'Analytics' },
   { href: '/install', label: 'Install' },
+  { href: '/billing', label: 'Billing' },
 ];
 
 function Shell({ children }: { children: React.ReactNode }) {
