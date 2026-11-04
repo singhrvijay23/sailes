@@ -122,7 +122,7 @@ export async function accountRoutes(app: FastifyInstance) {
   app.patch('/v1/stores/:storeId', { preHandler: requireStore(['owner', 'admin']) }, async (req) => {
     const body = StorePatch.parse(req.body);
     const { tenantId } = req.store!;
-    if (body.plan && (config.isProd || config.stripe.secretKey)) throw badRequest('Change your plan from the billing page');
+    if (body.plan && (config.stripe.secretKey || (config.isProd && !config.allowPlanSwitch))) throw badRequest('Change your plan from the billing page');
     const cur = (await query('SELECT settings FROM tenants WHERE id = $1', [tenantId])).rows[0];
     await query(
       `UPDATE tenants SET name = coalesce($2, name), site_url = CASE WHEN $3::boolean THEN $4 ELSE site_url END,

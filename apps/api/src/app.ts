@@ -4,7 +4,7 @@ import jwt from '@fastify/jwt';
 import multipart from '@fastify/multipart';
 import rateLimit from '@fastify/rate-limit';
 import fastifyStatic from '@fastify/static';
-import { existsSync } from 'node:fs';
+import { createReadStream, existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { ZodError } from 'zod';
@@ -75,6 +75,17 @@ export async function buildApp(opts: { logger?: boolean } = {}) {
   }
   const demoDir = path.resolve(here, '../public');
   if (existsSync(demoDir)) await app.register(fastifyStatic, { root: demoDir, prefix: '/demo/', decorateReply: false });
+
+  // Single-service test deployment: the console's static export is served from the same origin.
+  if (config.consoleDir && existsSync(config.consoleDir)) {
+    const consoleDir = path.resolve(config.consoleDir);
+    await app.register(fastifyStatic, { root: consoleDir, prefix: '/', decorateReply: false, redirect: true, wildcard: true });
+    const notFound = path.join(consoleDir, '404.html');
+    app.setNotFoundHandler((req, reply) => {
+      if (req.method === 'GET' && !req.url.startsWith('/v1/') && existsSync(notFound)) return reply.status(404).type('text/html').send(createReadStream(notFound));
+      return reply.status(404).send({ error: 'not_found', message: 'Not found' });
+    });
+  }
 
   return app;
 }

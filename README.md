@@ -93,6 +93,10 @@ Connectors listen for the widget's `sailes:add-to-cart` DOM event (call `prevent
 
 [`docs/connector-contract.md`](docs/connector-contract.md) is the contract the WooCommerce, Shopify, Wix and Webflow connectors follow: the one-time-code install flow (`/connect` in the console, `POST /v1/connect/exchange`), catalog and policy sync, the widget tag, the add-to-cart event and order reporting.
 
+## Free test site (Render)
+
+`render.yaml` deploys a single-service test copy on Render's free plan: the API also serves the console, so one web service and one Postgres database are enough. In Render: *New → Blueprint*, pick this repository and branch, *Apply*. The demo merchant (`demo@sailes.dev`) is created on first start with the password in the service's `SEED_DEMO_PASSWORD` environment variable. Billing is off, so plans can be switched directly. Not for production: free services sleep after 15 idle minutes and the free database expires after 30 days.
+
 ## Hosting
 
 Docker images: `apps/api/Dockerfile`, `apps/console/Dockerfile`. AWS (US) with Terraform: [`infra/terraform`](infra/terraform/README.md) (ECS Fargate, RDS Postgres + pgvector, ElastiCache Redis, KMS for the AI-key vault, ALB, alarms).

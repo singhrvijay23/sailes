@@ -20,8 +20,13 @@ export const config = {
   runWorkers: env('RUN_WORKERS', 'true') === 'true',
   /** Disable Redis entirely (tests): jobs run inline. */
   inlineJobs: env('INLINE_JOBS', 'false') === 'true',
-  publicApiUrl: env('PUBLIC_API_URL', 'http://localhost:4000'),
-  consoleOrigin: env('CONSOLE_ORIGIN', 'http://localhost:3000'),
+  // On Render (test site) the console is served by the API, so both default to the service's own URL.
+  publicApiUrl: env('PUBLIC_API_URL', process.env.RENDER_EXTERNAL_URL || 'http://localhost:4000'),
+  consoleOrigin: env('CONSOLE_ORIGIN', process.env.RENDER_EXTERNAL_URL || 'http://localhost:3000'),
+  /** Static export of the console to serve at "/" (single-service test deployments). */
+  consoleDir: process.env.CONSOLE_DIR ?? '',
+  /** Test sites: let merchants switch plans directly while Stripe is not configured. */
+  allowPlanSwitch: process.env.ALLOW_PLAN_SWITCH === 'true',
   /** Managed "SAILES AI" provider keys (our own keys, used when a tenant buys credits). */
   managed: {
     provider: env('MANAGED_AI_PROVIDER', 'openai') as 'openai' | 'gemini' | 'anthropic',

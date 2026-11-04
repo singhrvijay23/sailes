@@ -1,0 +1,32 @@
+# Free TEST site on Render (not production). Render dashboard → New → Blueprint → this repository.
+# One web service (API + console + widget) and one Postgres database. Free services sleep after
+# 15 minutes without traffic (first request then takes about a minute), and Render's free database
+# expires after 30 days unless upgraded.
+services:
+  - type: web
+    name: sailes-test
+    runtime: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./deploy/render/Dockerfile
+    dockerContext: .
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: sailes-test-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: SAILES_MASTER_KEY
+        generateValue: true
+      - key: SEED_DEMO_PASSWORD
+        generateValue: true
+
+databases:
+  - name: sailes-test-db
+    plan: free
+    region: oregon
+    databaseName: sailes
+    user: sailes
+    postgresMajorVersion: "16"

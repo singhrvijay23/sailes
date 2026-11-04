@@ -44,6 +44,7 @@ export async function billingRoutes(app: FastifyInstance) {
     }));
     return {
       configured: Boolean(config.stripe.secretKey),
+      planSwitchAllowed: !config.stripe.secretKey && (!config.isProd || config.allowPlanSwitch),
       plan: t.plan,
       interval: t.billing_interval,
       status: t.subscription_status,

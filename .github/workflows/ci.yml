@@ -41,6 +41,7 @@ jobs:
       - uses: actions/checkout@v4
       - run: docker build -f apps/api/Dockerfile -t sailes-api .
       - run: docker build -f apps/console/Dockerfile --build-arg NEXT_PUBLIC_API_URL=https://api.example.com -t sailes-console .
+      - run: docker build -f deploy/render/Dockerfile -t sailes-test-site .
       - name: API image loads its modules
         run: docker run --rm -e JWT_SECRET=ci-only-secret -e SAILES_MASTER_KEY=$(openssl rand -base64 32) --entrypoint node sailes-api --input-type=module -e "await import('./dist/app.js'); console.log('ok'); process.exit(0)"
 

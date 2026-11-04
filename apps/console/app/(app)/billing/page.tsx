@@ -90,7 +90,7 @@ export default function BillingPage() {
       )}
       {!b.configured && (
         <div className="mb-4">
-          <Notice kind="info">Billing isn&apos;t connected on this server (development). You can switch plans directly to try each tier.</Notice>
+          <Notice kind="info">{b.planSwitchAllowed ? 'Billing isn\u2019t connected on this server (test site). You can switch plans directly to try each tier.' : 'Billing isn\u2019t connected on this server yet.'}</Notice>
         </div>
       )}
       {!b.entitled && (
@@ -146,7 +146,7 @@ export default function BillingPage() {
               <div className="mt-4">
                 {current ? (
                   <span className="text-sm font-semibold text-navy">Current plan</span>
-                ) : !b.configured ? (
+                ) : !b.configured && b.planSwitchAllowed ? (
                   <button className="btn-ghost w-full" disabled={!!busy} onClick={() => devSwitch(p.id)}>
                     Switch to {p.name}
                   </button>
