@@ -4,6 +4,9 @@ import { createDemoProvider } from '../ai/providers/demo.js';
 import { ProviderError, type ChatProvider, type HistoryTurn } from '../ai/types.js';
 import { loadSearchContext } from '../search/search.js';
 import { monthUsage, recordUsage } from '../usage/usage.js';
+import { activeUpsellRules } from '../upsell/upsell.js';
+import { chargeCredits, creditBalance } from '../billing/billing.js';
+import { estimateCostUsd } from '../ai/pricing.js';
 import { planFor } from '../lib/plans.js';
 import { HttpError } from '../lib/errors.js';
 import { buildSystemPrompt, type StoreSettings } from './prompt.js';
@@ -55,7 +58,8 @@ export async function handleChat(req: ChatRequest): Promise<ChatOutcome> {
       await db.query<HistoryTurn>('SELECT role, content FROM (SELECT id, role, content FROM messages WHERE conversation_id = $1 ORDER BY id DESC LIMIT $2) m ORDER BY id', [conv.id, HISTORY_TURNS])
     ).rows;
     const policies = (await db.query<{ topic: string }>('SELECT topic FROM policies ORDER BY topic')).rows.map((r) => r.topic);
-    return { conv, isNew, usage, history, policies };
+    const credits = tenant.ai_mode === 'managed' ? await creditBalance(db) : 0;
+    return { conv, isNew, usage, history, policies, credits };
   });
   const conversationId: string = setup.conv.id;
   req.emit('conversation', { conversationId });
@@ -72,7 +76,9 @@ export async function handleChat(req: ChatRequest): Promise<ChatOutcome> {
   // 2. Pick the provider. Over the monthly AI budget we fall back to keyword-only mode instead of failing.
   let { provider, mode } = await providerForTenant(req.tenantId);
   let outcomeMode: ChatOutcome['mode'] = mode === 'demo' ? 'demo' : 'ai';
-  if (mode !== 'demo' && setup.usage.cost_usd >= tenant.budget) {
+  // SAILES AI (managed) runs on prepaid credits: at zero balance the store answers in keyword mode.
+  const outOfCredits = mode === 'managed' && setup.credits <= 0;
+  if (mode !== 'demo' && (setup.usage.cost_usd >= tenant.budget || outOfCredits)) {
     provider = createDemoProvider();
     outcomeMode = 'fallback';
   }
@@ -93,12 +99,13 @@ export async function handleChat(req: ChatRequest): Promise<ChatOutcome> {
   // 3. Run the agent loop. Each tool call gets its own short tenant-scoped transaction, so no
   //    database connection is held while waiting on the AI provider.
   const ctx = await withTenant(req.tenantId, loadSearchContext);
+  const upsellRules = plan.upsellRules ? await withTenant(req.tenantId, activeUpsellRules) : [];
   const run = (p: ChatProvider) =>
     p.runTurn({
       system,
       history,
       tools: TOOL_SPECS,
-      executeTool: (name, input) => withTenant(req.tenantId, (db) => makeToolExecutor({ db, ctx, provider: p, state, emit: req.emit })(name, input)),
+      executeTool: (name, input) => withTenant(req.tenantId, (db) => makeToolExecutor({ db, ctx, provider: p, state, emit: req.emit, upsellRules })(name, input)),
       onText: (delta) => req.emit('text', { delta }),
       maxRounds: 6,
       signal: req.signal,
@@ -146,6 +153,9 @@ export async function handleChat(req: ChatRequest): Promise<ChatOutcome> {
     ]);
     if (result.usage.inputTokens || result.usage.outputTokens) {
       await recordUsage(db, req.tenantId, { inputTokens: result.usage.inputTokens, outputTokens: result.usage.outputTokens, model: provider.model });
+      if (mode === 'managed' && outcomeMode === 'ai') {
+        await chargeCredits(db, req.tenantId, estimateCostUsd(provider.model, result.usage.inputTokens, result.usage.outputTokens), conversationId);
+      }
     }
     for (const s of state.searches) {
       await db.query(`INSERT INTO events (tenant_id, conversation_id, type, query, meta) VALUES ($1, $2, $3, $4, $5)`, [

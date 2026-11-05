@@ -42,6 +42,12 @@ export class LocalKeyWrapper implements KeyWrapper {
 }
 
 let wrapper: KeyWrapper = new LocalKeyWrapper(config.masterKey);
+if (config.kmsKeyId) {
+  const { KmsKeyWrapper } = await import('./kms.js');
+  // Keep reading locally sealed values only when a real master key is configured (migration).
+  const keepLocal = !config.isProd || Boolean(process.env.SAILES_MASTER_KEY);
+  wrapper = new KmsKeyWrapper(config.kmsKeyId, keepLocal ? wrapper : undefined);
+}
 export function setKeyWrapper(w: KeyWrapper) {
   wrapper = w;
 }

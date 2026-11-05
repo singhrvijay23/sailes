@@ -2,8 +2,8 @@
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-import { api, session } from '@/lib/api';
+import { useEffect, useState } from 'react';
+import { api, nextPath, session } from '@/lib/api';
 import { Notice, errorText } from '@/components/ui';
 import { AuthShell } from '@/components/brand';
 
@@ -13,6 +13,8 @@ export default function LoginPage() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const [qs, setQs] = useState('');
+  useEffect(() => setQs(window.location.search), []);
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -23,7 +25,7 @@ export default function LoginPage() {
       session.token = r.token;
       const me = await api('/v1/me');
       session.storeId = me.stores[0]?.id ?? null;
-      router.push('/');
+      router.push(nextPath());
     } catch (err) {
       setError(errorText(err));
     } finally {
@@ -45,7 +47,7 @@ export default function LoginPage() {
         </div>
         <button className="btn w-full" disabled={busy}>{busy ? 'Signing in…' : 'Sign in'}</button>
         <p className="muted text-center">
-          New to SAILES? <Link className="font-medium text-navy underline" href="/signup">Start a 14-day free trial</Link>
+          New to SAILES? <Link className="font-medium text-navy underline" href={`/signup${qs}`}>Start a 14-day free trial</Link>
         </p>
       </form>
     </AuthShell>

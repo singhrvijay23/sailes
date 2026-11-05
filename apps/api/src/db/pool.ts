@@ -1,10 +1,16 @@
+import { readFileSync } from 'node:fs';
 import pg from 'pg';
 import pgvector from 'pgvector/pg';
 import { config } from '../config.js';
 
 export type Db = pg.PoolClient;
 
-export const pool = new pg.Pool({ connectionString: config.databaseUrl, max: 20 });
+/** TLS to managed Postgres (RDS): verified against the CA bundle in DATABASE_CA_FILE. */
+export function sslOptions() {
+  return config.databaseCaFile ? { ca: readFileSync(config.databaseCaFile, 'utf8'), rejectUnauthorized: true } : undefined;
+}
+
+export const pool = new pg.Pool({ connectionString: config.databaseUrl, max: Number(process.env.DATABASE_POOL_MAX ?? 20), ssl: sslOptions() });
 
 pool.on('connect', async (client) => {
   await pgvector.registerTypes(client);

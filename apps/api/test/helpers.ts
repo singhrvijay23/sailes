@@ -4,7 +4,7 @@ import { seedDemo } from '../src/scripts/seed.js';
 
 export async function resetDb() {
   await migrate(() => {});
-  await query('TRUNCATE users, tenants CASCADE');
+  await query('TRUNCATE users, tenants, stripe_events CASCADE');
 }
 
 /** Fresh database with the three sample stores. Returns tenant ids by store key. */

@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { openSecret, sealSecret } from '../src/lib/vault.js';
+import { LocalKeyWrapper, openSecret, sealSecret, setKeyWrapper } from '../src/lib/vault.js';
+import { KmsKeyWrapper } from '../src/lib/kms.js';
+import { config } from '../src/config.js';
 import { hashPassword, verifyPassword } from '../src/lib/password.js';
 import { normalizeMany, parseCatalogFile } from '../src/catalog/normalize.js';
 import { parseShopperFilters } from '../src/ai/providers/demo.js';
@@ -23,6 +25,35 @@ describe('key vault', () => {
     const ct = Buffer.from(parts[2]!, 'base64');
     ct[ct.length - 1]! ^= 1;
     await expect(openSecret([parts[0], parts[1], ct.toString('base64')].join('.'))).rejects.toThrow();
+  });
+});
+
+describe('KMS key wrapper', () => {
+  it('wraps with KMS (with encryption context) and still opens locally sealed values', async () => {
+    const local = new LocalKeyWrapper(config.masterKey);
+    const legacy = await sealSecret('sk-legacy-1234');
+    const sent: any[] = [];
+    // Fake KMS: "encrypts" by reversing bytes; checks the context round-trips.
+    const fake = {
+      send: async (cmd: any) => {
+        sent.push(cmd);
+        const ctx = cmd.input.EncryptionContext;
+        if (ctx?.app !== 'sailes') throw new Error('missing context');
+        if (cmd.constructor.name === 'EncryptCommand') return { CiphertextBlob: Uint8Array.from(Buffer.from(cmd.input.Plaintext).reverse()) };
+        return { Plaintext: Uint8Array.from(Buffer.from(cmd.input.CiphertextBlob).reverse()) };
+      },
+    };
+    setKeyWrapper(new KmsKeyWrapper('alias/sailes', local, fake as any));
+    try {
+      const sealed = await sealSecret('sk-new-5678');
+      expect(Buffer.from(sealed.split('.')[1]!, 'base64').toString()).toMatch(/^kms:/);
+      expect(await openSecret(sealed)).toBe('sk-new-5678');
+      expect(await openSecret(legacy)).toBe('sk-legacy-1234');
+      expect(sent.map((c) => c.constructor.name)).toEqual(['EncryptCommand', 'DecryptCommand']);
+      await expect(new KmsKeyWrapper('k', undefined, fake as any).unwrap('local:abc')).rejects.toThrow('Unsupported');
+    } finally {
+      setKeyWrapper(local);
+    }
   });
 });
 

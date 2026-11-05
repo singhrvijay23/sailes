@@ -15,6 +15,7 @@ Copyright © True North Management Inc. (TNMI), Surrey, British Columbia. All ri
 | `apps/console` | Merchant console (Next.js + Tailwind): sign up, connect AI key, import catalog, rules, branding, test chat, transcripts, analytics, install snippet |
 | `apps/api/src/data/samples` | Three sample stores (wellness, gifts, apparel) for demos, manual testing and the quality eval |
 | `infra` | Database bootstrap SQL |
+| `docs/connector-contract.md` | The contract every platform connector (WooCommerce, Shopify, Wix, Webflow) follows: install flow, catalog sync, widget, add to cart, orders |
 
 ## Run it locally
 
@@ -74,15 +75,35 @@ The Part 1 release gate is 90%+ relevant answers with zero invented products, me
 | Rules | `GET/POST/DELETE /v1/stores/:id/rules`, `PUT/DELETE …/synonyms`, `PUT/DELETE …/policies` |
 | Keys | `PUT …/widget-keys/:key` (allowed sites), `GET/POST/DELETE …/api-keys` |
 | Insights | `GET …/analytics`, `GET …/conversations`, `GET …/conversations/:cid`, `POST …/orders` |
+| Billing | `GET …/billing`, `POST …/billing/checkout`, `POST …/billing/portal`, `POST …/billing/credits`, `POST /v1/billing/webhook` |
+| Upsell (Pro) | `GET/POST …/upsell-rules`, `PUT/DELETE …/upsell-rules/:id` |
+| Connectors | `POST …/connect/approve`, `POST /v1/connect/exchange`, `GET /v1/connector/store`, `POST /v1/connector/disconnect` |
 | Widget (public) | `GET /v1/widget/config`, `POST /v1/chat` (SSE), `POST /v1/events` |
 
 Connectors listen for the widget's `sailes:add-to-cart` DOM event (call `preventDefault()` to handle it) and add the product to the platform's real cart.
 
+## Billing, credits and upsell
+
+* **Plans and trial:** every new store gets a 14-day free trial. Merchants subscribe from *Billing* in the console (Stripe Checkout, remaining trial days carry over) and manage cards, invoices, plan changes and cancellation in the Stripe customer portal. Stripe webhooks (`POST /v1/billing/webhook`, signed and applied once per event) set the plan and status. When the trial has ended and there is no live subscription, the widget stops loading (HTTP 402). A failed renewal keeps the store working during Stripe's retries.
+* **SAILES AI credits:** merchants without their own AI key buy prepaid packs ($20, $50 → $55, $100 → $120). Each AI reply is charged at estimated provider cost × `CREDIT_MARKUP`. At zero balance the assistant answers in keyword mode instead of failing.
+* **Upsell rules (Pro and Enterprise):** cross-sells, bundles and discount offers under *Upsell & bundles*. The assistant puts the merchant's cross-sells first, offers a bundle only when every item is in stock, and mentions only discounts the merchant configured.
+* Without `STRIPE_SECRET_KEY`, billing is off and plans can be switched directly (development).
+
+## Platform connectors
+
+[`docs/connector-contract.md`](docs/connector-contract.md) is the contract the WooCommerce, Shopify, Wix and Webflow connectors follow: the one-time-code install flow (`/connect` in the console, `POST /v1/connect/exchange`), catalog and policy sync, the widget tag, the add-to-cart event and order reporting.
+
+## Free test site (Render)
+
+`render.yaml` deploys a single-service test copy on Render's free plan: the API also serves the console, so one web service and one Postgres database are enough. In Render: *New → Blueprint*, pick this repository and branch, *Apply*. The demo merchant (`demo@sailes.dev`) is created on first start with the password in the service's `SEED_DEMO_PASSWORD` environment variable. Billing is off, so plans can be switched directly. Not for production: free services sleep after 15 idle minutes and the free database expires after 30 days.
+
+## Hosting
+
+Docker images: `apps/api/Dockerfile`, `apps/console/Dockerfile`. AWS (US) with Terraform: [`infra/terraform`](infra/terraform/README.md) (ECS Fargate, RDS Postgres + pgvector, ElastiCache Redis, KMS for the AI-key vault, ALB, alarms).
+
 ## Not built yet (next milestones)
 
-* Stripe billing, trials and plan enforcement from Stripe webhooks (plan can be changed directly in development)
-* SAILES AI managed credits purchase flow (the managed provider path exists; packs and balance do not)
-* Upsell/cross-sell rules, bundles and discount triggers (Pro tier)
+* The platform connectors themselves (Part 2 and 3)
 * Team seats and roles UI, 2FA, audit log, transcript retention job
-* AWS deployment (Terraform, ECS, RDS, KMS), Sentry/OpenTelemetry, Langfuse tracing
-* Growing the eval to 200+ cases
+* Sentry/OpenTelemetry, Langfuse tracing, shared (Redis) rate limits
+* Live-model eval runs, growing the eval to 200+ cases

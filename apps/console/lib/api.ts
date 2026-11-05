@@ -53,3 +53,10 @@ export async function api<T = any>(path: string, init: RequestInit & { json?: un
 
 /** Path helper for the current store. */
 export const storePath = (p = '') => `/v1/stores/${session.storeId}${p}`;
+
+/** Where to go after sign-in: a same-site path from ?next=, otherwise the overview. */
+export function nextPath() {
+  if (typeof window === 'undefined') return '/';
+  const n = new URLSearchParams(window.location.search).get('next');
+  return n && n.startsWith('/') && !n.startsWith('//') && !n.startsWith('/\\') ? n : '/';
+}

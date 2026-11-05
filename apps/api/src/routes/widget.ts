@@ -4,6 +4,7 @@ import { query, withTenant } from '../db/pool.js';
 import { config } from '../config.js';
 import { forbidden, unauthorized, HttpError } from '../lib/errors.js';
 import { handleChat } from '../agent/orchestrator.js';
+import { isEntitled } from '../billing/billing.js';
 
 interface WidgetKey {
   tenantId: string;
@@ -31,6 +32,12 @@ export async function resolveWidgetKey(req: FastifyRequest): Promise<WidgetKey> 
   return { tenantId: entry.tenantId, key };
 }
 
+/** A store whose trial ended without a live subscription stops serving the widget (402). */
+async function assertEntitled(tenantId: string) {
+  const t = (await query('SELECT trial_ends_at, subscription_status FROM tenants WHERE id = $1', [tenantId])).rows[0];
+  if (!t || !isEntitled(t)) throw new HttpError(402, 'This store assistant is not active', 'store_inactive');
+}
+
 const ChatBody = z.object({
   message: z.string().min(1).max(2000),
   conversationId: z.string().uuid().nullish(),
@@ -48,6 +55,7 @@ const EventBody = z.object({
 export async function widgetRoutes(app: FastifyInstance) {
   app.get('/v1/widget/config', async (req) => {
     const { tenantId } = await resolveWidgetKey(req);
+    await assertEntitled(tenantId);
     const t = (await query('SELECT name, settings, platform FROM tenants WHERE id = $1', [tenantId])).rows[0];
     const s = t.settings ?? {};
     return {
@@ -65,6 +73,7 @@ export async function widgetRoutes(app: FastifyInstance) {
   /** Shopper chat. Streams server-sent events: conversation, text, products, question, reset, done, error. */
   app.post('/v1/chat', { config: { rateLimit: { max: 30, timeWindow: '1 minute', keyGenerator: (req: FastifyRequest) => `${req.headers['x-sailes-key']}:${req.ip}` } } }, async (req, reply) => {
     const { tenantId } = await resolveWidgetKey(req);
+    await assertEntitled(tenantId);
     const body = ChatBody.parse(req.body);
     const controller = new AbortController();
     reply.raw.on('close', () => {
