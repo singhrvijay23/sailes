@@ -1,0 +1,964 @@
+{
+ "store": {
+  "name": "PeakForm Nutrition (demo)",
+  "description": "protein, supplements and home fitness gear"
+ },
+ "policies": {
+  "shipping": "Free US shipping on orders over $50. Standard shipping takes 3 to 5 business days.",
+  "returns": "Unopened products can be returned within 30 days for a full refund."
+ },
+ "products": [
+  {
+   "id": "WEL-001",
+   "title": "GreenRoot Whey Isolate - Vanilla",
+   "brand": "GreenRoot",
+   "description": "Whey Isolate powder with 25g of whey protein per scoop. Vanilla flavor, mixes smoothly in water or milk. Soy-free and gluten-free. Great after workouts.",
+   "categories": [
+    "Protein Powder",
+    "Supplements"
+   ],
+   "tags": [
+    "protein",
+    "fitness",
+    "whey"
+   ],
+   "price": 34.99,
+   "in_stock": false,
+   "stock_qty": 68,
+   "rating": 4.0,
+   "review_count": 162,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Whey+Isolate+vanilla",
+   "url": "https://demo-wellness.example/products/wel-001",
+   "attributes": {
+    "flavor": "vanilla",
+    "protein_g": 25,
+    "protein_source": "whey",
+    "soy": "no",
+    "size": "1 lb"
+   }
+  },
+  {
+   "id": "WEL-002",
+   "title": "IronLeaf Whey Isolate - Chocolate",
+   "brand": "IronLeaf",
+   "description": "Whey Isolate powder with 25g of whey protein per scoop. Chocolate flavor, mixes smoothly in water or milk. Soy-free and gluten-free. Great after workouts.",
+   "categories": [
+    "Protein Powder",
+    "Supplements"
+   ],
+   "tags": [
+    "protein",
+    "fitness",
+    "whey"
+   ],
+   "price": 39.99,
+   "in_stock": false,
+   "stock_qty": 55,
+   "rating": 4.1,
+   "review_count": 67,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Whey+Isolate+chocolate",
+   "url": "https://demo-wellness.example/products/wel-002",
+   "attributes": {
+    "flavor": "chocolate",
+    "protein_g": 25,
+    "protein_source": "whey",
+    "soy": "no",
+    "size": "2 lb"
+   }
+  },
+  {
+   "id": "WEL-003",
+   "title": "IronLeaf Whey Isolate - Strawberry",
+   "brand": "IronLeaf",
+   "description": "Whey Isolate powder with 25g of whey protein per scoop. Strawberry flavor, mixes smoothly in water or milk. Soy-free and gluten-free. Great after workouts.",
+   "categories": [
+    "Protein Powder",
+    "Supplements"
+   ],
+   "tags": [
+    "protein",
+    "fitness",
+    "whey"
+   ],
+   "price": 49.99,
+   "in_stock": false,
+   "stock_qty": 72,
+   "rating": 3.7,
+   "review_count": 100,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Whey+Isolate+strawberry",
+   "url": "https://demo-wellness.example/products/wel-003",
+   "attributes": {
+    "flavor": "strawberry",
+    "protein_g": 25,
+    "protein_source": "whey",
+    "soy": "no",
+    "size": "1 lb"
+   }
+  },
+  {
+   "id": "WEL-004",
+   "title": "IronLeaf Whey Isolate - Unflavored",
+   "brand": "IronLeaf",
+   "description": "Whey Isolate powder with 25g of whey protein per scoop. Unflavored flavor, mixes smoothly in water or milk. Soy-free and gluten-free. Great after workouts.",
+   "categories": [
+    "Protein Powder",
+    "Supplements"
+   ],
+   "tags": [
+    "protein",
+    "fitness",
+    "whey"
+   ],
+   "price": 59.99,
+   "in_stock": true,
+   "stock_qty": 73,
+   "rating": 4.8,
+   "review_count": 653,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Whey+Isolate+unflavored",
+   "url": "https://demo-wellness.example/products/wel-004",
+   "attributes": {
+    "flavor": "unflavored",
+    "protein_g": 25,
+    "protein_source": "whey",
+    "soy": "no",
+    "size": "5 lb"
+   }
+  },
+  {
+   "id": "WEL-005",
+   "title": "PeakForm Whey Blend - Vanilla",
+   "brand": "PeakForm",
+   "description": "Whey Blend powder with 22g of whey protein per scoop. Vanilla flavor, mixes smoothly in water or milk. Contains soy lecithin. Great after workouts.",
+   "categories": [
+    "Protein Powder",
+    "Supplements"
+   ],
+   "tags": [
+    "protein",
+    "fitness",
+    "whey"
+   ],
+   "price": 54.99,
+   "in_stock": true,
+   "stock_qty": 37,
+   "rating": 4.1,
+   "review_count": 234,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Whey+Blend+vanilla",
+   "url": "https://demo-wellness.example/products/wel-005",
+   "attributes": {
+    "flavor": "vanilla",
+    "protein_g": 22,
+    "protein_source": "whey",
+    "soy": "yes",
+    "size": "2 lb"
+   }
+  },
+  {
+   "id": "WEL-006",
+   "title": "IronLeaf Whey Blend - Chocolate",
+   "brand": "IronLeaf",
+   "description": "Whey Blend powder with 22g of whey protein per scoop. Chocolate flavor, mixes smoothly in water or milk. Contains soy lecithin. Great after workouts.",
+   "categories": [
+    "Protein Powder",
+    "Supplements"
+   ],
+   "tags": [
+    "protein",
+    "fitness",
+    "whey"
+   ],
+   "price": 39.99,
+   "in_stock": true,
+   "stock_qty": 87,
+   "rating": 3.8,
+   "review_count": 128,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Whey+Blend+chocolate",
+   "url": "https://demo-wellness.example/products/wel-006",
+   "attributes": {
+    "flavor": "chocolate",
+    "protein_g": 22,
+    "protein_source": "whey",
+    "soy": "yes",
+    "size": "1 lb"
+   }
+  },
+  {
+   "id": "WEL-007",
+   "title": "IronLeaf Whey Blend - Strawberry",
+   "brand": "IronLeaf",
+   "description": "Whey Blend powder with 22g of whey protein per scoop. Strawberry flavor, mixes smoothly in water or milk. Contains soy lecithin. Great after workouts.",
+   "categories": [
+    "Protein Powder",
+    "Supplements"
+   ],
+   "tags": [
+    "protein",
+    "fitness",
+    "whey"
+   ],
+   "price": 34.99,
+   "in_stock": true,
+   "stock_qty": 70,
+   "rating": 3.7,
+   "review_count": 592,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Whey+Blend+strawberry",
+   "url": "https://demo-wellness.example/products/wel-007",
+   "attributes": {
+    "flavor": "strawberry",
+    "protein_g": 22,
+    "protein_source": "whey",
+    "soy": "yes",
+    "size": "5 lb"
+   }
+  },
+  {
+   "id": "WEL-008",
+   "title": "IronLeaf Whey Blend - Unflavored",
+   "brand": "IronLeaf",
+   "description": "Whey Blend powder with 22g of whey protein per scoop. Unflavored flavor, mixes smoothly in water or milk. Contains soy lecithin. Great after workouts.",
+   "categories": [
+    "Protein Powder",
+    "Supplements"
+   ],
+   "tags": [
+    "protein",
+    "fitness",
+    "whey"
+   ],
+   "price": 34.99,
+   "in_stock": true,
+   "stock_qty": 68,
+   "rating": 3.7,
+   "review_count": 69,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Whey+Blend+unflavored",
+   "url": "https://demo-wellness.example/products/wel-008",
+   "attributes": {
+    "flavor": "unflavored",
+    "protein_g": 22,
+    "protein_source": "whey",
+    "soy": "yes",
+    "size": "2 lb"
+   }
+  },
+  {
+   "id": "WEL-009",
+   "title": "GreenRoot Plant Protein - Vanilla",
+   "brand": "GreenRoot",
+   "description": "Plant Protein powder with 21g of pea and rice protein per scoop. Vanilla flavor, mixes smoothly in water or milk. Soy-free and gluten-free. Great after workouts.",
+   "categories": [
+    "Protein Powder",
+    "Supplements"
+   ],
+   "tags": [
+    "protein",
+    "fitness",
+    "pea"
+   ],
+   "price": 54.99,
+   "in_stock": true,
+   "stock_qty": 46,
+   "rating": 4.6,
+   "review_count": 484,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Plant+Protein+vanilla",
+   "url": "https://demo-wellness.example/products/wel-009",
+   "attributes": {
+    "flavor": "vanilla",
+    "protein_g": 21,
+    "protein_source": "pea and rice",
+    "soy": "no",
+    "size": "2 lb"
+   }
+  },
+  {
+   "id": "WEL-010",
+   "title": "GreenRoot Plant Protein - Chocolate",
+   "brand": "GreenRoot",
+   "description": "Plant Protein powder with 21g of pea and rice protein per scoop. Chocolate flavor, mixes smoothly in water or milk. Soy-free and gluten-free. Great after workouts.",
+   "categories": [
+    "Protein Powder",
+    "Supplements"
+   ],
+   "tags": [
+    "protein",
+    "fitness",
+    "pea"
+   ],
+   "price": 34.99,
+   "in_stock": false,
+   "stock_qty": 38,
+   "rating": 3.9,
+   "review_count": 192,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Plant+Protein+chocolate",
+   "url": "https://demo-wellness.example/products/wel-010",
+   "attributes": {
+    "flavor": "chocolate",
+    "protein_g": 21,
+    "protein_source": "pea and rice",
+    "soy": "no",
+    "size": "5 lb"
+   }
+  },
+  {
+   "id": "WEL-011",
+   "title": "GreenRoot Plant Protein - Strawberry",
+   "brand": "GreenRoot",
+   "description": "Plant Protein powder with 21g of pea and rice protein per scoop. Strawberry flavor, mixes smoothly in water or milk. Soy-free and gluten-free. Great after workouts.",
+   "categories": [
+    "Protein Powder",
+    "Supplements"
+   ],
+   "tags": [
+    "protein",
+    "fitness",
+    "pea"
+   ],
+   "price": 44.99,
+   "in_stock": true,
+   "stock_qty": 9,
+   "rating": 4.2,
+   "review_count": 359,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Plant+Protein+strawberry",
+   "url": "https://demo-wellness.example/products/wel-011",
+   "attributes": {
+    "flavor": "strawberry",
+    "protein_g": 21,
+    "protein_source": "pea and rice",
+    "soy": "no",
+    "size": "1 lb"
+   }
+  },
+  {
+   "id": "WEL-012",
+   "title": "GreenRoot Plant Protein - Unflavored",
+   "brand": "GreenRoot",
+   "description": "Plant Protein powder with 21g of pea and rice protein per scoop. Unflavored flavor, mixes smoothly in water or milk. Soy-free and gluten-free. Great after workouts.",
+   "categories": [
+    "Protein Powder",
+    "Supplements"
+   ],
+   "tags": [
+    "protein",
+    "fitness",
+    "pea"
+   ],
+   "price": 39.99,
+   "in_stock": true,
+   "stock_qty": 62,
+   "rating": 4.3,
+   "review_count": 176,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Plant+Protein+unflavored",
+   "url": "https://demo-wellness.example/products/wel-012",
+   "attributes": {
+    "flavor": "unflavored",
+    "protein_g": 21,
+    "protein_source": "pea and rice",
+    "soy": "no",
+    "size": "2 lb"
+   }
+  },
+  {
+   "id": "WEL-013",
+   "title": "PeakForm Soy Protein - Vanilla",
+   "brand": "PeakForm",
+   "description": "Soy Protein powder with 20g of soy protein per scoop. Vanilla flavor, mixes smoothly in water or milk. Contains soy lecithin. Great after workouts.",
+   "categories": [
+    "Protein Powder",
+    "Supplements"
+   ],
+   "tags": [
+    "protein",
+    "fitness",
+    "soy"
+   ],
+   "price": 54.99,
+   "in_stock": true,
+   "stock_qty": 112,
+   "rating": 3.7,
+   "review_count": 692,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Soy+Protein+vanilla",
+   "url": "https://demo-wellness.example/products/wel-013",
+   "attributes": {
+    "flavor": "vanilla",
+    "protein_g": 20,
+    "protein_source": "soy",
+    "soy": "yes",
+    "size": "2 lb"
+   }
+  },
+  {
+   "id": "WEL-014",
+   "title": "IronLeaf Soy Protein - Chocolate",
+   "brand": "IronLeaf",
+   "description": "Soy Protein powder with 20g of soy protein per scoop. Chocolate flavor, mixes smoothly in water or milk. Contains soy lecithin. Great after workouts.",
+   "categories": [
+    "Protein Powder",
+    "Supplements"
+   ],
+   "tags": [
+    "protein",
+    "fitness",
+    "soy"
+   ],
+   "price": 44.99,
+   "in_stock": true,
+   "stock_qty": 58,
+   "rating": 4.0,
+   "review_count": 366,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Soy+Protein+chocolate",
+   "url": "https://demo-wellness.example/products/wel-014",
+   "attributes": {
+    "flavor": "chocolate",
+    "protein_g": 20,
+    "protein_source": "soy",
+    "soy": "yes",
+    "size": "1 lb"
+   }
+  },
+  {
+   "id": "WEL-015",
+   "title": "GreenRoot Soy Protein - Strawberry",
+   "brand": "GreenRoot",
+   "description": "Soy Protein powder with 20g of soy protein per scoop. Strawberry flavor, mixes smoothly in water or milk. Contains soy lecithin. Great after workouts.",
+   "categories": [
+    "Protein Powder",
+    "Supplements"
+   ],
+   "tags": [
+    "protein",
+    "fitness",
+    "soy"
+   ],
+   "price": 29.99,
+   "in_stock": false,
+   "stock_qty": 89,
+   "rating": 4.7,
+   "review_count": 284,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Soy+Protein+strawberry",
+   "url": "https://demo-wellness.example/products/wel-015",
+   "attributes": {
+    "flavor": "strawberry",
+    "protein_g": 20,
+    "protein_source": "soy",
+    "soy": "yes",
+    "size": "2 lb"
+   }
+  },
+  {
+   "id": "WEL-016",
+   "title": "GreenRoot Soy Protein - Unflavored",
+   "brand": "GreenRoot",
+   "description": "Soy Protein powder with 20g of soy protein per scoop. Unflavored flavor, mixes smoothly in water or milk. Contains soy lecithin. Great after workouts.",
+   "categories": [
+    "Protein Powder",
+    "Supplements"
+   ],
+   "tags": [
+    "protein",
+    "fitness",
+    "soy"
+   ],
+   "price": 39.99,
+   "in_stock": true,
+   "stock_qty": 113,
+   "rating": 4.4,
+   "review_count": 705,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Soy+Protein+unflavored",
+   "url": "https://demo-wellness.example/products/wel-016",
+   "attributes": {
+    "flavor": "unflavored",
+    "protein_g": 20,
+    "protein_source": "soy",
+    "soy": "yes",
+    "size": "5 lb"
+   }
+  },
+  {
+   "id": "WEL-017",
+   "title": "GreenRoot Casein Night Protein - Vanilla",
+   "brand": "GreenRoot",
+   "description": "Casein Night Protein powder with 24g of casein protein per scoop. Vanilla flavor, mixes smoothly in water or milk. Soy-free and gluten-free. Slow-release protein ideal before bed.",
+   "categories": [
+    "Protein Powder",
+    "Supplements"
+   ],
+   "tags": [
+    "protein",
+    "fitness",
+    "casein"
+   ],
+   "price": 34.99,
+   "in_stock": true,
+   "stock_qty": 63,
+   "rating": 4.1,
+   "review_count": 480,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Casein+Night+Protein+vanilla",
+   "url": "https://demo-wellness.example/products/wel-017",
+   "attributes": {
+    "flavor": "vanilla",
+    "protein_g": 24,
+    "protein_source": "casein",
+    "soy": "no",
+    "size": "1 lb"
+   }
+  },
+  {
+   "id": "WEL-018",
+   "title": "PeakForm Casein Night Protein - Chocolate",
+   "brand": "PeakForm",
+   "description": "Casein Night Protein powder with 24g of casein protein per scoop. Chocolate flavor, mixes smoothly in water or milk. Soy-free and gluten-free. Slow-release protein ideal before bed.",
+   "categories": [
+    "Protein Powder",
+    "Supplements"
+   ],
+   "tags": [
+    "protein",
+    "fitness",
+    "casein"
+   ],
+   "price": 34.99,
+   "in_stock": true,
+   "stock_qty": 117,
+   "rating": 3.9,
+   "review_count": 302,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Casein+Night+Protein+chocolate",
+   "url": "https://demo-wellness.example/products/wel-018",
+   "attributes": {
+    "flavor": "chocolate",
+    "protein_g": 24,
+    "protein_source": "casein",
+    "soy": "no",
+    "size": "2 lb"
+   }
+  },
+  {
+   "id": "WEL-019",
+   "title": "GreenRoot Casein Night Protein - Strawberry",
+   "brand": "GreenRoot",
+   "description": "Casein Night Protein powder with 24g of casein protein per scoop. Strawberry flavor, mixes smoothly in water or milk. Soy-free and gluten-free. Slow-release protein ideal before bed.",
+   "categories": [
+    "Protein Powder",
+    "Supplements"
+   ],
+   "tags": [
+    "protein",
+    "fitness",
+    "casein"
+   ],
+   "price": 54.99,
+   "in_stock": true,
+   "stock_qty": 17,
+   "rating": 3.7,
+   "review_count": 467,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Casein+Night+Protein+strawberry",
+   "url": "https://demo-wellness.example/products/wel-019",
+   "attributes": {
+    "flavor": "strawberry",
+    "protein_g": 24,
+    "protein_source": "casein",
+    "soy": "no",
+    "size": "2 lb"
+   }
+  },
+  {
+   "id": "WEL-020",
+   "title": "IronLeaf Casein Night Protein - Unflavored",
+   "brand": "IronLeaf",
+   "description": "Casein Night Protein powder with 24g of casein protein per scoop. Unflavored flavor, mixes smoothly in water or milk. Soy-free and gluten-free. Slow-release protein ideal before bed.",
+   "categories": [
+    "Protein Powder",
+    "Supplements"
+   ],
+   "tags": [
+    "protein",
+    "fitness",
+    "casein"
+   ],
+   "price": 44.99,
+   "in_stock": true,
+   "stock_qty": 87,
+   "rating": 4.7,
+   "review_count": 293,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Casein+Night+Protein+unflavored",
+   "url": "https://demo-wellness.example/products/wel-020",
+   "attributes": {
+    "flavor": "unflavored",
+    "protein_g": 24,
+    "protein_source": "casein",
+    "soy": "no",
+    "size": "2 lb"
+   }
+  },
+  {
+   "id": "WEL-021",
+   "title": "PeakForm Collagen Peptides - Vanilla",
+   "brand": "PeakForm",
+   "description": "Collagen Peptides powder with 18g of collagen protein per scoop. Vanilla flavor, mixes smoothly in water or milk. Soy-free and gluten-free. Great after workouts.",
+   "categories": [
+    "Protein Powder",
+    "Supplements"
+   ],
+   "tags": [
+    "protein",
+    "fitness",
+    "collagen"
+   ],
+   "price": 34.99,
+   "in_stock": true,
+   "stock_qty": 84,
+   "rating": 4.8,
+   "review_count": 162,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Collagen+Peptides+vanilla",
+   "url": "https://demo-wellness.example/products/wel-021",
+   "attributes": {
+    "flavor": "vanilla",
+    "protein_g": 18,
+    "protein_source": "collagen",
+    "soy": "no",
+    "size": "1 lb"
+   }
+  },
+  {
+   "id": "WEL-022",
+   "title": "IronLeaf Collagen Peptides - Chocolate",
+   "brand": "IronLeaf",
+   "description": "Collagen Peptides powder with 18g of collagen protein per scoop. Chocolate flavor, mixes smoothly in water or milk. Soy-free and gluten-free. Great after workouts.",
+   "categories": [
+    "Protein Powder",
+    "Supplements"
+   ],
+   "tags": [
+    "protein",
+    "fitness",
+    "collagen"
+   ],
+   "price": 34.99,
+   "in_stock": true,
+   "stock_qty": 0,
+   "rating": 3.6,
+   "review_count": 859,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Collagen+Peptides+chocolate",
+   "url": "https://demo-wellness.example/products/wel-022",
+   "attributes": {
+    "flavor": "chocolate",
+    "protein_g": 18,
+    "protein_source": "collagen",
+    "soy": "no",
+    "size": "1 lb"
+   }
+  },
+  {
+   "id": "WEL-023",
+   "title": "IronLeaf Collagen Peptides - Unflavored",
+   "brand": "IronLeaf",
+   "description": "Collagen Peptides powder with 18g of collagen protein per scoop. Unflavored flavor, mixes smoothly in water or milk. Soy-free and gluten-free. Great after workouts.",
+   "categories": [
+    "Protein Powder",
+    "Supplements"
+   ],
+   "tags": [
+    "protein",
+    "fitness",
+    "collagen"
+   ],
+   "price": 54.99,
+   "in_stock": true,
+   "stock_qty": 16,
+   "rating": 4.1,
+   "review_count": 386,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Collagen+Peptides+unflavored",
+   "url": "https://demo-wellness.example/products/wel-023",
+   "attributes": {
+    "flavor": "unflavored",
+    "protein_g": 18,
+    "protein_source": "collagen",
+    "soy": "no",
+    "size": "5 lb"
+   }
+  },
+  {
+   "id": "WEL-024",
+   "title": "Shaker Bottle 28oz",
+   "brand": "IronLeaf",
+   "description": "Leak-proof shaker bottle with mixing ball. Dishwasher safe, BPA-free.",
+   "categories": [
+    "Accessories"
+   ],
+   "tags": [
+    "protein",
+    "fitness",
+    "shaker"
+   ],
+   "price": 12.99,
+   "in_stock": true,
+   "stock_qty": 178,
+   "rating": 4.7,
+   "review_count": 640,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Shaker+Bottle+28oz",
+   "url": "https://demo-wellness.example/products/wel-024",
+   "attributes": {
+    "capacity": "28 oz",
+    "color": "black"
+   }
+  },
+  {
+   "id": "WEL-025",
+   "title": "Stainless Shaker 24oz",
+   "brand": "IronLeaf",
+   "description": "Insulated stainless steel shaker that keeps shakes cold for hours.",
+   "categories": [
+    "Accessories"
+   ],
+   "tags": [
+    "protein",
+    "fitness",
+    "shaker"
+   ],
+   "price": 24.99,
+   "in_stock": true,
+   "stock_qty": 148,
+   "rating": 4.6,
+   "review_count": 475,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Stainless+Shaker+24oz",
+   "url": "https://demo-wellness.example/products/wel-025",
+   "attributes": {
+    "capacity": "24 oz",
+    "color": "silver"
+   }
+  },
+  {
+   "id": "WEL-026",
+   "title": "Pre-Workout Citrus Burst",
+   "brand": "GreenRoot",
+   "description": "Pre-workout with 200mg caffeine, beta-alanine and citrulline.",
+   "categories": [
+    "Pre-Workout"
+   ],
+   "tags": [
+    "energy",
+    "fitness"
+   ],
+   "price": 32.99,
+   "in_stock": true,
+   "stock_qty": 31,
+   "rating": 4.1,
+   "review_count": 416,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Pre-Workout+Citrus+Burst",
+   "url": "https://demo-wellness.example/products/wel-026",
+   "attributes": {
+    "flavor": "citrus",
+    "caffeine_mg": 200
+   }
+  },
+  {
+   "id": "WEL-027",
+   "title": "Stim-Free Pre-Workout Berry",
+   "brand": "PeakForm",
+   "description": "Caffeine-free pre-workout for evening training.",
+   "categories": [
+    "Pre-Workout"
+   ],
+   "tags": [
+    "energy",
+    "fitness"
+   ],
+   "price": 34.99,
+   "in_stock": true,
+   "stock_qty": 53,
+   "rating": 4.2,
+   "review_count": 418,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Stim-Free+Pre-Workout+Berry",
+   "url": "https://demo-wellness.example/products/wel-027",
+   "attributes": {
+    "flavor": "berry",
+    "caffeine_mg": 0
+   }
+  },
+  {
+   "id": "WEL-028",
+   "title": "Daily Multivitamin",
+   "brand": "GreenRoot",
+   "description": "Complete daily multivitamin with vitamin D3 and B12. Vegan.",
+   "categories": [
+    "Vitamins"
+   ],
+   "tags": [
+    "vitamins",
+    "health"
+   ],
+   "price": 19.99,
+   "in_stock": true,
+   "stock_qty": 46,
+   "rating": 3.7,
+   "review_count": 221,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Daily+Multivitamin",
+   "url": "https://demo-wellness.example/products/wel-028",
+   "attributes": {
+    "servings": 60
+   }
+  },
+  {
+   "id": "WEL-029",
+   "title": "Vitamin D3 + K2",
+   "brand": "PeakForm",
+   "description": "High-strength vitamin D3 with K2 for bone health.",
+   "categories": [
+    "Vitamins"
+   ],
+   "tags": [
+    "vitamins",
+    "health"
+   ],
+   "price": 16.99,
+   "in_stock": true,
+   "stock_qty": 31,
+   "rating": 3.7,
+   "review_count": 623,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Vitamin+D3+++K2",
+   "url": "https://demo-wellness.example/products/wel-029",
+   "attributes": {
+    "servings": 90
+   }
+  },
+  {
+   "id": "WEL-030",
+   "title": "Magnesium Glycinate Sleep",
+   "brand": "IronLeaf",
+   "description": "Gentle magnesium for relaxation and better sleep.",
+   "categories": [
+    "Vitamins"
+   ],
+   "tags": [
+    "vitamins",
+    "sleep"
+   ],
+   "price": 21.99,
+   "in_stock": true,
+   "stock_qty": 30,
+   "rating": 3.6,
+   "review_count": 162,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Magnesium+Glycinate+Sleep",
+   "url": "https://demo-wellness.example/products/wel-030",
+   "attributes": {
+    "servings": 60
+   }
+  },
+  {
+   "id": "WEL-031",
+   "title": "Creatine Monohydrate",
+   "brand": "PeakForm",
+   "description": "Micronised creatine monohydrate, 5g per serving.",
+   "categories": [
+    "Supplements"
+   ],
+   "tags": [
+    "fitness",
+    "strength"
+   ],
+   "price": 27.99,
+   "in_stock": true,
+   "stock_qty": 23,
+   "rating": 4.8,
+   "review_count": 636,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Creatine+Monohydrate",
+   "url": "https://demo-wellness.example/products/wel-031",
+   "attributes": {
+    "flavor": "unflavored",
+    "servings": 100
+   }
+  },
+  {
+   "id": "WEL-032",
+   "title": "Resistance Band Set",
+   "brand": "GreenRoot",
+   "description": "Five latex-free resistance bands from light to extra heavy, with carry bag.",
+   "categories": [
+    "Equipment"
+   ],
+   "tags": [
+    "fitness",
+    "home workout"
+   ],
+   "price": 29.99,
+   "in_stock": true,
+   "stock_qty": 43,
+   "rating": 4.7,
+   "review_count": 636,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Resistance+Band+Set",
+   "url": "https://demo-wellness.example/products/wel-032",
+   "attributes": {
+    "pieces": 5
+   }
+  },
+  {
+   "id": "WEL-033",
+   "title": "Eco Yoga Mat 6mm",
+   "brand": "IronLeaf",
+   "description": "Non-slip natural rubber yoga mat, 6mm thick.",
+   "categories": [
+    "Equipment"
+   ],
+   "tags": [
+    "yoga",
+    "home workout"
+   ],
+   "price": 49.99,
+   "in_stock": true,
+   "stock_qty": 98,
+   "rating": 4.4,
+   "review_count": 363,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Eco+Yoga+Mat+6mm",
+   "url": "https://demo-wellness.example/products/wel-033",
+   "attributes": {
+    "thickness_mm": 6,
+    "color": "sage"
+   }
+  },
+  {
+   "id": "WEL-034",
+   "title": "Foam Roller",
+   "brand": "GreenRoot",
+   "description": "High-density foam roller for muscle recovery.",
+   "categories": [
+    "Equipment"
+   ],
+   "tags": [
+    "recovery",
+    "fitness"
+   ],
+   "price": 24.99,
+   "in_stock": true,
+   "stock_qty": 124,
+   "rating": 4.2,
+   "review_count": 126,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Foam+Roller",
+   "url": "https://demo-wellness.example/products/wel-034",
+   "attributes": {
+    "length_in": 18
+   }
+  },
+  {
+   "id": "WEL-035",
+   "title": "Electrolyte Hydration Mix",
+   "brand": "PeakForm",
+   "description": "Sugar-free electrolyte powder for training and travel.",
+   "categories": [
+    "Supplements"
+   ],
+   "tags": [
+    "hydration",
+    "fitness"
+   ],
+   "price": 22.99,
+   "in_stock": true,
+   "stock_qty": 41,
+   "rating": 4.2,
+   "review_count": 327,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Electrolyte+Hydration+Mix",
+   "url": "https://demo-wellness.example/products/wel-035",
+   "attributes": {
+    "flavor": "lemon lime",
+    "sugar_g": 0
+   }
+  }
+ ]
+}

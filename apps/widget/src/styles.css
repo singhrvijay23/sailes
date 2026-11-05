@@ -1,0 +1,57 @@
+:host { all: initial; }
+* { box-sizing: border-box; }
+.sl-panel, .sl-bubble { font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: #1a1d24; }
+.sl-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+.sl-bubble { position: fixed; bottom: 20px; width: 60px; height: 60px; border-radius: 50%; border: 0; color: #fff; cursor: pointer; box-shadow: 0 6px 20px rgba(0,0,0,.25); z-index: 2147483000; display: grid; place-items: center; transition: transform .15s; }
+.sl-bubble:hover { transform: scale(1.06); }
+.sl-bubble:focus-visible, button:focus-visible, a:focus-visible, textarea:focus-visible { outline: 3px solid #E63946; outline-offset: 2px; }
+.sl-right { right: 20px; }
+.sl-left { left: 20px; }
+
+.sl-panel { --sl-primary: #1B2A4A; display: flex; flex-direction: column; background: #fff; border-radius: 16px; overflow: hidden; }
+.sl-floating { position: fixed; bottom: 20px; width: 380px; height: min(640px, calc(100vh - 40px)); box-shadow: 0 12px 40px rgba(0,0,0,.25); z-index: 2147483000; }
+.sl-inline { width: 100%; height: 600px; border: 1px solid #e3e6ec; }
+@media (max-width: 480px) { .sl-floating { right: 0; left: 0; bottom: 0; width: 100%; height: 100%; border-radius: 0; } }
+
+.sl-header { display: flex; align-items: center; gap: 10px; padding: 12px 14px; background: var(--sl-primary); color: #fff; }
+.sl-logo { width: 32px; height: 32px; border-radius: 8px; object-fit: cover; background: #fff; }
+.sl-dot { width: 10px; height: 10px; border-radius: 50%; background: #3ddc84; box-shadow: 0 0 0 3px rgba(61,220,132,.3); }
+.sl-title { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+.sl-title span { font-size: 12px; opacity: .8; }
+.sl-close { background: transparent; border: 0; color: #fff; font-size: 26px; line-height: 1; cursor: pointer; padding: 0 4px; }
+
+.sl-log { flex: 1; overflow-y: auto; padding: 14px; background: #f6f7f9; display: flex; flex-direction: column; gap: 10px; }
+.sl-msg { max-width: 92%; }
+.sl-msg p { margin: 0; padding: 9px 12px; border-radius: 14px; white-space: pre-wrap; word-wrap: break-word; }
+.sl-assistant { align-self: flex-start; }
+.sl-assistant p { background: #fff; border: 1px solid #e3e6ec; border-bottom-left-radius: 4px; }
+.sl-user { align-self: flex-end; }
+.sl-user p { background: var(--sl-primary); color: #fff; border-bottom-right-radius: 4px; }
+.sl-error p { border-color: #f3b4b9; background: #fff5f5; }
+.sl-typing { letter-spacing: 3px; color: #8a90a0; animation: sl-pulse 1.2s infinite; }
+@keyframes sl-pulse { 50% { opacity: .35; } }
+
+.sl-cards { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.sl-card { display: flex; gap: 10px; background: #fff; border: 1px solid #e3e6ec; border-radius: 12px; padding: 10px; }
+.sl-card img { width: 72px; height: 72px; object-fit: cover; border-radius: 8px; flex-shrink: 0; background: #eef0f4; }
+.sl-card-body { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1; }
+.sl-card-title { color: #1a1d24; font-weight: 600; text-decoration: none; }
+.sl-card-title:hover { text-decoration: underline; }
+.sl-price { font-weight: 700; color: var(--sl-primary); }
+.sl-price s { color: #8a90a0; font-weight: 400; margin-left: 6px; }
+.sl-rating { font-size: 12px; color: #b7791f; }
+.sl-rating span { color: #6b7280; }
+.sl-card .sl-reason { padding: 0; background: none; border: 0; font-size: 12.5px; color: #4b5161; }
+.sl-add { margin-top: 4px; align-self: flex-start; background: #E63946; color: #fff; border: 0; border-radius: 8px; padding: 6px 12px; font-weight: 600; cursor: pointer; }
+.sl-add:hover { filter: brightness(.95); }
+
+.sl-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.sl-chip { border: 1px solid var(--sl-primary); color: var(--sl-primary); background: #fff; border-radius: 999px; padding: 6px 12px; cursor: pointer; font: inherit; font-size: 13px; }
+.sl-chip:hover { background: var(--sl-primary); color: #fff; }
+
+.sl-form { display: flex; gap: 8px; padding: 10px; border-top: 1px solid #e3e6ec; background: #fff; }
+.sl-form textarea { flex: 1; resize: none; border: 1px solid #cfd4dc; border-radius: 10px; padding: 9px 11px; font: inherit; max-height: 120px; color: #1a1d24; background: #fff; }
+.sl-send { width: 40px; border: 0; border-radius: 10px; background: var(--sl-primary); color: #fff; cursor: pointer; display: grid; place-items: center; }
+.sl-send:disabled { opacity: .45; cursor: default; }
+.sl-foot { text-align: center; font-size: 11px; color: #8a90a0; padding: 0 0 8px; background: #fff; }

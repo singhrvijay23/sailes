@@ -1,0 +1,676 @@
+{
+ "store": {
+  "name": "Wrapped & Ready Gifts (demo)",
+  "description": "thoughtful gifts for every occasion"
+ },
+ "policies": {
+  "shipping": "Orders ship within 1 business day. Free gift wrap on every order. US shipping is $6.95, free over $75.",
+  "returns": "Non-personalized items can be returned within 30 days. Personalized items are final sale."
+ },
+ "products": [
+  {
+   "id": "GFT-001",
+   "title": "Soy Wax Candle - Lavender Fields",
+   "brand": "Wrapped & Ready",
+   "description": "Hand-poured soy wax candle with lavender essential oil. 45-hour burn.",
+   "categories": [
+    "Candles",
+    "Gifts"
+   ],
+   "tags": [
+    "gift",
+    "candles"
+   ],
+   "price": 28,
+   "in_stock": true,
+   "rating": 3.7,
+   "review_count": 358,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Soy+Wax+Candle+-+Lavender+Fields",
+   "url": "https://demo-gifts.example/products/gft-001",
+   "attributes": {
+    "recipient": "women",
+    "occasion": "birthday, thank you, housewarming",
+    "scent": "lavender"
+   }
+  },
+  {
+   "id": "GFT-002",
+   "title": "Soy Wax Candle - Cedar & Smoke",
+   "brand": "Wrapped & Ready",
+   "description": "Woody cedar and smoke scented candle in an amber glass jar.",
+   "categories": [
+    "Candles",
+    "Gifts"
+   ],
+   "tags": [
+    "gift",
+    "candles"
+   ],
+   "price": 28,
+   "in_stock": true,
+   "rating": 4.2,
+   "review_count": 716,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Soy+Wax+Candle+-+Cedar+&+Smoke",
+   "url": "https://demo-gifts.example/products/gft-002",
+   "attributes": {
+    "recipient": "men",
+    "occasion": "birthday, thank you, housewarming",
+    "scent": "cedar"
+   }
+  },
+  {
+   "id": "GFT-003",
+   "title": "Soy Wax Candle - Fresh Linen",
+   "brand": "Wrapped & Ready",
+   "description": "Clean fresh-linen scent, perfect for any room.",
+   "categories": [
+    "Candles",
+    "Gifts"
+   ],
+   "tags": [
+    "gift",
+    "candles"
+   ],
+   "price": 24,
+   "in_stock": true,
+   "rating": 3.6,
+   "review_count": 548,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Soy+Wax+Candle+-+Fresh+Linen",
+   "url": "https://demo-gifts.example/products/gft-003",
+   "attributes": {
+    "recipient": "anyone",
+    "occasion": "birthday, thank you, housewarming",
+    "scent": "linen"
+   }
+  },
+  {
+   "id": "GFT-004",
+   "title": "Three Wick Candle - Vanilla Bean",
+   "brand": "Wrapped & Ready",
+   "description": "Large three-wick candle with warm vanilla bean scent.",
+   "categories": [
+    "Candles",
+    "Gifts"
+   ],
+   "tags": [
+    "gift",
+    "candles"
+   ],
+   "price": 42,
+   "in_stock": true,
+   "rating": 4.5,
+   "review_count": 35,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Three+Wick+Candle+-+Vanilla+Bean",
+   "url": "https://demo-gifts.example/products/gft-004",
+   "attributes": {
+    "recipient": "anyone",
+    "occasion": "birthday, thank you, housewarming",
+    "scent": "vanilla"
+   }
+  },
+  {
+   "id": "GFT-005",
+   "title": "Personalized Name Mug",
+   "brand": "Wrapped & Ready",
+   "description": "Ceramic 11oz mug printed with a name of your choice.",
+   "categories": [
+    "Mugs",
+    "Gifts"
+   ],
+   "tags": [
+    "gift",
+    "mugs",
+    "personalized"
+   ],
+   "price": 22,
+   "in_stock": true,
+   "rating": 4.0,
+   "review_count": 666,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Personalized+Name+Mug",
+   "url": "https://demo-gifts.example/products/gft-005",
+   "attributes": {
+    "recipient": "anyone",
+    "occasion": "birthday, fathers day, mothers day",
+    "personalized": "yes"
+   }
+  },
+  {
+   "id": "GFT-006",
+   "title": "Best Dad Ever Mug",
+   "brand": "Wrapped & Ready",
+   "description": "Classic 11oz ceramic mug for fathers. Dishwasher safe.",
+   "categories": [
+    "Mugs",
+    "Gifts"
+   ],
+   "tags": [
+    "gift",
+    "mugs"
+   ],
+   "price": 18,
+   "in_stock": true,
+   "rating": 4.5,
+   "review_count": 275,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Best+Dad+Ever+Mug",
+   "url": "https://demo-gifts.example/products/gft-006",
+   "attributes": {
+    "recipient": "men",
+    "occasion": "birthday, fathers day, mothers day"
+   }
+  },
+  {
+   "id": "GFT-007",
+   "title": "World's Best Mom Mug",
+   "brand": "Wrapped & Ready",
+   "description": "Classic 11oz ceramic mug for mothers. Dishwasher safe.",
+   "categories": [
+    "Mugs",
+    "Gifts"
+   ],
+   "tags": [
+    "gift",
+    "mugs"
+   ],
+   "price": 18,
+   "in_stock": true,
+   "rating": 4.8,
+   "review_count": 372,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=World's+Best+Mom+Mug",
+   "url": "https://demo-gifts.example/products/gft-007",
+   "attributes": {
+    "recipient": "women",
+    "occasion": "birthday, fathers day, mothers day"
+   }
+  },
+  {
+   "id": "GFT-008",
+   "title": "Sterling Silver Initial Necklace",
+   "brand": "Wrapped & Ready",
+   "description": "Dainty sterling silver necklace with an engraved initial pendant.",
+   "categories": [
+    "Jewelry",
+    "Gifts"
+   ],
+   "tags": [
+    "gift",
+    "jewelry",
+    "personalized"
+   ],
+   "price": 65,
+   "in_stock": true,
+   "rating": 4.3,
+   "review_count": 805,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Sterling+Silver+Initial+Necklace",
+   "url": "https://demo-gifts.example/products/gft-008",
+   "attributes": {
+    "recipient": "women",
+    "occasion": "birthday, anniversary, valentines",
+    "personalized": "yes"
+   }
+  },
+  {
+   "id": "GFT-009",
+   "title": "Leather Bracelet for Men",
+   "brand": "Wrapped & Ready",
+   "description": "Braided genuine leather bracelet with steel clasp.",
+   "categories": [
+    "Jewelry",
+    "Gifts"
+   ],
+   "tags": [
+    "gift",
+    "jewelry"
+   ],
+   "price": 39,
+   "in_stock": true,
+   "rating": 4.4,
+   "review_count": 635,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Leather+Bracelet+for+Men",
+   "url": "https://demo-gifts.example/products/gft-009",
+   "attributes": {
+    "recipient": "men",
+    "occasion": "birthday, anniversary, valentines"
+   }
+  },
+  {
+   "id": "GFT-010",
+   "title": "Birthstone Stud Earrings",
+   "brand": "Wrapped & Ready",
+   "description": "Hypoallergenic studs with a birthstone crystal of your choice.",
+   "categories": [
+    "Jewelry",
+    "Gifts"
+   ],
+   "tags": [
+    "gift",
+    "jewelry"
+   ],
+   "price": 49,
+   "in_stock": true,
+   "rating": 4.9,
+   "review_count": 881,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Birthstone+Stud+Earrings",
+   "url": "https://demo-gifts.example/products/gft-010",
+   "attributes": {
+    "recipient": "women",
+    "occasion": "birthday, anniversary, valentines"
+   }
+  },
+  {
+   "id": "GFT-011",
+   "title": "Gourmet Chocolate Gift Box",
+   "brand": "Wrapped & Ready",
+   "description": "Assorted 16-piece Belgian chocolate box with gift ribbon.",
+   "categories": [
+    "Food Gifts",
+    "Gifts"
+   ],
+   "tags": [
+    "gift",
+    "food gifts"
+   ],
+   "price": 35,
+   "in_stock": true,
+   "rating": 3.9,
+   "review_count": 418,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Gourmet+Chocolate+Gift+Box",
+   "url": "https://demo-gifts.example/products/gft-011",
+   "attributes": {
+    "recipient": "anyone",
+    "occasion": "thank you, holiday"
+   }
+  },
+  {
+   "id": "GFT-012",
+   "title": "Artisan Coffee Sampler",
+   "brand": "Wrapped & Ready",
+   "description": "Four single-origin coffees, 4oz each, whole bean.",
+   "categories": [
+    "Food Gifts",
+    "Gifts"
+   ],
+   "tags": [
+    "gift",
+    "food gifts"
+   ],
+   "price": 32,
+   "in_stock": true,
+   "rating": 3.9,
+   "review_count": 538,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Artisan+Coffee+Sampler",
+   "url": "https://demo-gifts.example/products/gft-012",
+   "attributes": {
+    "recipient": "anyone",
+    "occasion": "thank you, holiday"
+   }
+  },
+  {
+   "id": "GFT-013",
+   "title": "Spa Day Gift Basket",
+   "brand": "Wrapped & Ready",
+   "description": "Bath bombs, body lotion, lavender candle and a plush towel.",
+   "categories": [
+    "Gift Baskets",
+    "Gifts"
+   ],
+   "tags": [
+    "gift",
+    "gift baskets"
+   ],
+   "price": 79,
+   "in_stock": true,
+   "rating": 4.6,
+   "review_count": 36,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Spa+Day+Gift+Basket",
+   "url": "https://demo-gifts.example/products/gft-013",
+   "attributes": {
+    "recipient": "women",
+    "occasion": "birthday, thank you, get well",
+    "scent": "lavender"
+   }
+  },
+  {
+   "id": "GFT-014",
+   "title": "BBQ Lover Gift Basket",
+   "brand": "Wrapped & Ready",
+   "description": "Spice rubs, hot sauces and a stainless steel grill brush.",
+   "categories": [
+    "Gift Baskets",
+    "Gifts"
+   ],
+   "tags": [
+    "gift",
+    "gift baskets"
+   ],
+   "price": 69,
+   "in_stock": true,
+   "rating": 4.2,
+   "review_count": 206,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=BBQ+Lover+Gift+Basket",
+   "url": "https://demo-gifts.example/products/gft-014",
+   "attributes": {
+    "recipient": "men",
+    "occasion": "birthday, thank you, get well"
+   }
+  },
+  {
+   "id": "GFT-015",
+   "title": "Kids Craft Kit",
+   "brand": "Wrapped & Ready",
+   "description": "Make-your-own bracelets and keychains kit for ages 6 and up.",
+   "categories": [
+    "Kids",
+    "Gifts"
+   ],
+   "tags": [
+    "gift",
+    "kids"
+   ],
+   "price": 29,
+   "in_stock": true,
+   "rating": 4.8,
+   "review_count": 465,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Kids+Craft+Kit",
+   "url": "https://demo-gifts.example/products/gft-015",
+   "attributes": {
+    "recipient": "kids",
+    "occasion": "birthday, holiday"
+   }
+  },
+  {
+   "id": "GFT-016",
+   "title": "Plush Dinosaur Bedtime Buddy",
+   "brand": "Wrapped & Ready",
+   "description": "Super-soft plush T-rex that glows softly at night.",
+   "categories": [
+    "Kids",
+    "Gifts"
+   ],
+   "tags": [
+    "gift",
+    "kids"
+   ],
+   "price": 25,
+   "in_stock": true,
+   "rating": 4.5,
+   "review_count": 365,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Plush+Dinosaur+Bedtime+Buddy",
+   "url": "https://demo-gifts.example/products/gft-016",
+   "attributes": {
+    "recipient": "kids",
+    "occasion": "birthday, holiday"
+   }
+  },
+  {
+   "id": "GFT-017",
+   "title": "Succulent Trio in Ceramic Pots",
+   "brand": "Wrapped & Ready",
+   "description": "Three live succulents in white ceramic pots. Low maintenance.",
+   "categories": [
+    "Plants",
+    "Gifts"
+   ],
+   "tags": [
+    "gift",
+    "plants"
+   ],
+   "price": 36,
+   "in_stock": true,
+   "rating": 4.1,
+   "review_count": 233,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Succulent+Trio+in+Ceramic+Pots",
+   "url": "https://demo-gifts.example/products/gft-017",
+   "attributes": {
+    "recipient": "anyone",
+    "occasion": "housewarming, thank you"
+   }
+  },
+  {
+   "id": "GFT-018",
+   "title": "Mini Bonsai Tree Kit",
+   "brand": "Wrapped & Ready",
+   "description": "Grow-your-own bonsai kit with seeds, soil and guide.",
+   "categories": [
+    "Plants",
+    "Gifts"
+   ],
+   "tags": [
+    "gift",
+    "plants"
+   ],
+   "price": 45,
+   "in_stock": true,
+   "rating": 4.2,
+   "review_count": 353,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Mini+Bonsai+Tree+Kit",
+   "url": "https://demo-gifts.example/products/gft-018",
+   "attributes": {
+    "recipient": "anyone",
+    "occasion": "housewarming, thank you"
+   }
+  },
+  {
+   "id": "GFT-019",
+   "title": "Leather Journal",
+   "brand": "Wrapped & Ready",
+   "description": "Refillable leather-bound journal with 200 lined pages.",
+   "categories": [
+    "Stationery",
+    "Gifts"
+   ],
+   "tags": [
+    "gift",
+    "stationery"
+   ],
+   "price": 34,
+   "in_stock": true,
+   "rating": 4.4,
+   "review_count": 632,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Leather+Journal",
+   "url": "https://demo-gifts.example/products/gft-019",
+   "attributes": {
+    "recipient": "anyone",
+    "occasion": "graduation, anniversary"
+   }
+  },
+  {
+   "id": "GFT-020",
+   "title": "Engraved Wooden Watch Box",
+   "brand": "Wrapped & Ready",
+   "description": "Walnut watch box holding 6 watches, custom engraving included.",
+   "categories": [
+    "Keepsakes",
+    "Gifts"
+   ],
+   "tags": [
+    "gift",
+    "keepsakes",
+    "personalized"
+   ],
+   "price": 58,
+   "in_stock": true,
+   "rating": 4.2,
+   "review_count": 676,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Engraved+Wooden+Watch+Box",
+   "url": "https://demo-gifts.example/products/gft-020",
+   "attributes": {
+    "recipient": "men",
+    "occasion": "anniversary, wedding, fathers day",
+    "personalized": "yes"
+   }
+  },
+  {
+   "id": "GFT-021",
+   "title": "Photo Frame - Est. Year",
+   "brand": "Wrapped & Ready",
+   "description": "Wooden photo frame engraved with a family name and year.",
+   "categories": [
+    "Keepsakes",
+    "Gifts"
+   ],
+   "tags": [
+    "gift",
+    "keepsakes",
+    "personalized"
+   ],
+   "price": 27,
+   "in_stock": true,
+   "rating": 4.4,
+   "review_count": 862,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Photo+Frame+-+Est.+Year",
+   "url": "https://demo-gifts.example/products/gft-021",
+   "attributes": {
+    "recipient": "anyone",
+    "occasion": "anniversary, wedding, fathers day",
+    "personalized": "yes"
+   }
+  },
+  {
+   "id": "GFT-022",
+   "title": "Cozy Knit Throw Blanket",
+   "brand": "Wrapped & Ready",
+   "description": "Chunky knit throw blanket, 50 x 60 inches, machine washable.",
+   "categories": [
+    "Home",
+    "Gifts"
+   ],
+   "tags": [
+    "gift",
+    "home"
+   ],
+   "price": 55,
+   "in_stock": true,
+   "rating": 4.8,
+   "review_count": 809,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Cozy+Knit+Throw+Blanket",
+   "url": "https://demo-gifts.example/products/gft-022",
+   "attributes": {
+    "recipient": "anyone",
+    "occasion": "housewarming, holiday"
+   }
+  },
+  {
+   "id": "GFT-023",
+   "title": "Aromatherapy Diffuser",
+   "brand": "Wrapped & Ready",
+   "description": "Ultrasonic diffuser with color-changing light, includes lavender oil.",
+   "categories": [
+    "Home",
+    "Gifts"
+   ],
+   "tags": [
+    "gift",
+    "home"
+   ],
+   "price": 39,
+   "in_stock": true,
+   "rating": 3.9,
+   "review_count": 190,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Aromatherapy+Diffuser",
+   "url": "https://demo-gifts.example/products/gft-023",
+   "attributes": {
+    "recipient": "women",
+    "occasion": "housewarming, holiday",
+    "scent": "lavender"
+   }
+  },
+  {
+   "id": "GFT-024",
+   "title": "Whiskey Stones Gift Set",
+   "brand": "Wrapped & Ready",
+   "description": "Nine granite whiskey stones with two glasses in a wooden box.",
+   "categories": [
+    "Bar",
+    "Gifts"
+   ],
+   "tags": [
+    "gift",
+    "bar"
+   ],
+   "price": 29,
+   "in_stock": true,
+   "rating": 4.4,
+   "review_count": 96,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Whiskey+Stones+Gift+Set",
+   "url": "https://demo-gifts.example/products/gft-024",
+   "attributes": {
+    "recipient": "men",
+    "occasion": "birthday, fathers day"
+   }
+  },
+  {
+   "id": "GFT-025",
+   "title": "Cocktail Shaker Set",
+   "brand": "Wrapped & Ready",
+   "description": "Stainless steel 10-piece bartender kit with recipe card.",
+   "categories": [
+    "Bar",
+    "Gifts"
+   ],
+   "tags": [
+    "gift",
+    "bar"
+   ],
+   "price": 48,
+   "in_stock": true,
+   "rating": 4.9,
+   "review_count": 413,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Cocktail+Shaker+Set",
+   "url": "https://demo-gifts.example/products/gft-025",
+   "attributes": {
+    "recipient": "anyone",
+    "occasion": "birthday, fathers day"
+   }
+  },
+  {
+   "id": "GFT-026",
+   "title": "Anniversary Star Map Print",
+   "brand": "Wrapped & Ready",
+   "description": "Custom star map of the night sky on your special date. 12x16 print.",
+   "categories": [
+    "Keepsakes",
+    "Gifts"
+   ],
+   "tags": [
+    "gift",
+    "keepsakes",
+    "personalized"
+   ],
+   "price": 59,
+   "in_stock": true,
+   "rating": 4.6,
+   "review_count": 94,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Anniversary+Star+Map+Print",
+   "url": "https://demo-gifts.example/products/gft-026",
+   "attributes": {
+    "recipient": "couples",
+    "occasion": "anniversary, wedding, fathers day",
+    "personalized": "yes"
+   }
+  },
+  {
+   "id": "GFT-027",
+   "title": "Couples Bucket List Book",
+   "brand": "Wrapped & Ready",
+   "description": "Fill-in book of 100 adventures to share.",
+   "categories": [
+    "Stationery",
+    "Gifts"
+   ],
+   "tags": [
+    "gift",
+    "stationery"
+   ],
+   "price": 21,
+   "in_stock": false,
+   "rating": 3.8,
+   "review_count": 138,
+   "image_url": "https://placehold.co/400x400/1B2A4A/FFFFFF/png?text=Couples+Bucket+List+Book",
+   "url": "https://demo-gifts.example/products/gft-027",
+   "attributes": {
+    "recipient": "couples",
+    "occasion": "graduation, anniversary"
+   }
+  }
+ ]
+}

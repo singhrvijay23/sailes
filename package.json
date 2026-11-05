@@ -1,0 +1,17 @@
+{
+  "name": "sailes",
+  "private": true,
+  "description": "SAILES: AI sales associate for ecommerce stores (SaaS core). Copyright True North Management Inc.",
+  "scripts": {
+    "dev:api": "pnpm --filter @sailes/api dev",
+    "dev:widget": "pnpm --filter @sailes/widget dev",
+    "dev:console": "pnpm --filter @sailes/console dev",
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "typecheck": "pnpm -r typecheck",
+    "migrate": "pnpm --filter @sailes/api migrate",
+    "seed": "pnpm --filter @sailes/api seed"
+  },
+  "packageManager": "pnpm@10.28.0",
+  "engines": { "node": ">=22" }
+}
