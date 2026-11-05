@@ -1,0 +1,26 @@
+{%- comment -%}
+  SAILES inline block: renders the chat inside a page section instead of the floating bubble,
+  for example on a "Help me choose" page.
+{%- endcomment -%}
+{%- assign sailes_key = app.metafields.sailes.widget_key.value -%}
+{%- assign sailes_src = app.metafields.sailes.script_url.value -%}
+<div id="sailes-inline-{{ block.id }}" class="sailes-inline" style="min-height: {{ block.settings.height }}px;"></div>
+{%- if sailes_key != blank and sailes_src != blank -%}
+  <script>
+    window.SAILES_SHOPIFY = window.SAILES_SHOPIFY || { root: {{ routes.root_url | json }}, afterAdd: 'stay' };
+  </script>
+  <script src="{{ 'sailes-cart.js' | asset_url }}" defer></script>
+  <script src="{{ sailes_src | escape }}" data-sailes-key="{{ sailes_key | escape }}" data-mode="inline" data-target="#sailes-inline-{{ block.id }}" async></script>
+{%- elsif request.design_mode -%}
+  <p>Connect SAILES in the app to show the assistant here.</p>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "SAILES chat (inline)",
+  "target": "section",
+  "settings": [
+    { "type": "range", "id": "height", "label": "Minimum height", "min": 300, "max": 900, "step": 20, "unit": "px", "default": 560 }
+  ]
+}
+{% endschema %}

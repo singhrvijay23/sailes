@@ -1,5 +1,6 @@
 packages:
   - apps/*
+  - connectors/shopify
 onlyBuiltDependencies:
   - esbuild
   - msgpackr-extract

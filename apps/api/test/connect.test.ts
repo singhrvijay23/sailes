@@ -77,6 +77,20 @@ describe('connector install flow', () => {
     expect((await app.inject({ method: 'GET', url: '/v1/connector/store', headers: auth2 })).statusCode).toBe(401);
   });
 
+  it('lets a connector read and set the AI provider from its admin page', async () => {
+    const code = new URL((await approve(good)).json().redirect).searchParams.get('code')!;
+    const creds = (await app.inject({ method: 'POST', url: '/v1/connect/exchange', payload: { code } })).json();
+    const auth = { authorization: `Bearer ${creds.apiKey}` };
+    expect((await app.inject({ method: 'GET', url: `/v1/stores/${storeId}/ai`, headers: auth })).json()).toMatchObject({ credential: null });
+    const put = await app.inject({ method: 'PUT', url: `/v1/stores/${storeId}/ai`, headers: auth, payload: { mode: 'demo' } });
+    expect(put.json()).toMatchObject({ ok: true, mode: 'demo' });
+    // An invalid key is rejected by the provider check, not by permissions.
+    const bad = await app.inject({ method: 'PUT', url: `/v1/stores/${storeId}/ai`, headers: auth, payload: { mode: 'byok', provider: 'openai' } });
+    expect(bad.statusCode).toBe(400);
+    // Removing the key stays a console-only action.
+    expect((await app.inject({ method: 'DELETE', url: `/v1/stores/${storeId}/ai`, headers: auth })).statusCode).toBe(403);
+  });
+
   it('rejects expired codes', async () => {
     const code = new URL((await approve(good)).json().redirect).searchParams.get('code')!;
     await query(`UPDATE connect_codes SET expires_at = now() - interval '1 minute' WHERE used_at IS NULL`);

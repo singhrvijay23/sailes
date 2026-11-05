@@ -14,6 +14,7 @@ Copyright © True North Management Inc. (TNMI), Surrey, British Columbia. All ri
 | `apps/widget` | The shopper chat widget (Preact, Shadow DOM, about 10 KB gzipped), installed with one script tag |
 | `apps/console` | Merchant console (Next.js + Tailwind): sign up, connect AI key, import catalog, rules, branding, test chat, transcripts, analytics, install snippet |
 | `apps/api/src/data/samples` | Three sample stores (wellness, gifts, apparel) for demos, manual testing and the quality eval |
+| `connectors/shopify` | Shopify app (Part 3): embedded admin page, catalog and policy sync, theme app extension for the assistant, add to cart, order reporting. See its [README](connectors/shopify/README.md) |
 | `infra` | Database bootstrap SQL |
 | `docs/connector-contract.md` | The contract every platform connector (WooCommerce, Shopify, Wix, Webflow) follows: install flow, catalog sync, widget, add to cart, orders |
 
@@ -92,6 +93,8 @@ Connectors listen for the widget's `sailes:add-to-cart` DOM event (call `prevent
 ## Platform connectors
 
 [`docs/connector-contract.md`](docs/connector-contract.md) is the contract the WooCommerce, Shopify, Wix and Webflow connectors follow: the one-time-code install flow (`/connect` in the console, `POST /v1/connect/exchange`), catalog and policy sync, the widget tag, the add-to-cart event and order reporting.
+
+* Shopify: [`connectors/shopify`](connectors/shopify/README.md)
 
 ## Free test site (Render)
 

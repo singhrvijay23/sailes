@@ -30,7 +30,9 @@ export async function aiRoutes(app: FastifyInstance) {
     managedAvailable: Boolean(config.managed.apiKey),
   }));
 
-  app.get('/v1/stores/:storeId/ai', { preHandler: requireStore() }, async (req) => {
+  // Connectors (sk_ keys) may read and set the AI provider so a platform's admin page can offer the
+  // "use your own AI key" form. The key passes through the connector's server; it is stored only here.
+  app.get('/v1/stores/:storeId/ai', { preHandler: requireStore(['owner', 'admin', 'viewer', 'connector']) }, async (req) => {
     const { tenantId } = req.store!;
     const t = (await query('SELECT ai_mode FROM tenants WHERE id = $1', [tenantId])).rows[0];
     const cred = await withTenant(tenantId, async (db) => (await db.query('SELECT provider, chat_model, embedding_model, key_last4, validated_at, updated_at FROM ai_credentials')).rows[0] ?? null);
@@ -38,7 +40,7 @@ export async function aiRoutes(app: FastifyInstance) {
   });
 
   /** Connect or change the AI provider. The key is validated with a live call, then sealed in the vault. */
-  app.put('/v1/stores/:storeId/ai', { preHandler: requireStore(['owner', 'admin']), config: { rateLimit: { max: 20, timeWindow: '10 minutes' } } }, async (req) => {
+  app.put('/v1/stores/:storeId/ai', { preHandler: requireStore(['owner', 'admin', 'connector']), config: { rateLimit: { max: 20, timeWindow: '10 minutes' } } }, async (req) => {
     const body = AiBody.parse(req.body);
     const { tenantId } = req.store!;
     let embeddingModel = HASH_EMBED_MODEL;
