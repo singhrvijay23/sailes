@@ -34,6 +34,69 @@ jobs:
           TEST_DATABASE_URL: postgres://sailes:sailes@localhost:5432/sailes_test
       - run: pnpm --filter @sailes/console build
 
+  woocommerce-lint:
+    # The plugin supports PHP 7.4+; catch syntax that only newer PHP accepts.
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ['7.4', '8.3']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          tools: none
+      - run: find connectors/woocommerce -name '*.php' -print0 | xargs -0 -n1 php -l
+
+  woocommerce:
+    # Real WordPress + WooCommerce (SQLite) with the plugin, against the API: connect, sync, policies, AI settings, orders, disconnect.
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U postgres" --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      DATABASE_URL: postgres://sailes:sailes@localhost:5432/sailes
+      JWT_SECRET: ci-only-secret
+      INLINE_JOBS: 'true'
+      PUBLIC_API_URL: http://localhost:4000
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: sqlite3, pdo_sqlite, sodium, intl
+          tools: none
+      - run: pnpm install --frozen-lockfile
+      - name: Create database roles
+        run: psql postgres://postgres:postgres@localhost:5432/postgres -f infra/db-init.sql
+      - name: Start the API
+        run: |
+          export SAILES_MASTER_KEY=$(openssl rand -base64 32)
+          pnpm --filter @sailes/api migrate
+          (cd apps/api && nohup pnpm exec tsx src/server.ts > /tmp/api.log 2>&1 &)
+          for i in $(seq 1 30); do curl -sf http://localhost:4000/v1/plans > /dev/null && break; sleep 1; done
+          curl -sf http://localhost:4000/v1/plans > /dev/null
+      - name: Set up WordPress + WooCommerce
+        run: connectors/woocommerce/bin/setup-wordpress.sh /tmp/wp http://localhost:4000
+      - name: Plugin integration test
+        run: php connectors/woocommerce/tests/integration.php /tmp/wp http://localhost:4000
+      - name: Logs
+        if: failure()
+        run: |
+          tail -100 /tmp/api.log
+          tail -100 /tmp/wp/wp-content/debug.log || true
+
   images:
     # Proves both production images build. Pushing to ECR is added once the AWS account is connected.
     runs-on: ubuntu-latest
