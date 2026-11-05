@@ -1,0 +1,35 @@
+# Shopify app configuration. Link it to the app in the Partner Dashboard with `shopify app config link`,
+# then deploy the config and the theme extension with `shopify app deploy`.
+# client_id and the URLs below are placeholders until the app is created and the domain is confirmed.
+client_id = "REPLACE_WITH_CLIENT_ID"
+name = "SAILES AI Sales Assistant"
+handle = "sailes"
+application_url = "https://shopify.sailes.ai/app"
+embedded = true
+
+[build]
+include_config_on_deploy = true
+
+[access_scopes]
+# read_products: catalog sync. read_inventory: stock updates. read_orders: revenue attribution
+# (orders/paid webhook). read_legal_policies: shipping and refund policies for the assistant.
+scopes = "read_products,read_inventory,read_orders,read_legal_policies"
+# Shopify-managed installation: scopes are granted at install, no OAuth redirect in our code.
+use_legacy_install_flow = false
+
+[auth]
+redirect_urls = ["https://shopify.sailes.ai/connect/callback"]
+
+[webhooks]
+api_version = "2026-10"
+
+  [[webhooks.subscriptions]]
+  topics = ["products/create", "products/update", "products/delete", "inventory_levels/update", "orders/paid", "app/uninstalled"]
+  uri = "/webhooks"
+
+  [[webhooks.subscriptions]]
+  compliance_topics = ["customers/data_request", "customers/redact", "shop/redact"]
+  uri = "/webhooks"
+
+[pos]
+embedded = false

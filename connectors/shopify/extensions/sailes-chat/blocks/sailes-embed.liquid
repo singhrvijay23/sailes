@@ -1,0 +1,40 @@
+{%- comment -%}
+  SAILES app embed: adds the assistant (floating chat bubble) to every storefront page.
+  The widget key and script URL are app metafields written by the SAILES app when the store connects.
+  Look and greeting come from the SAILES console, so this block has no appearance settings.
+{%- endcomment -%}
+{%- assign sailes_key = app.metafields.sailes.widget_key.value -%}
+{%- assign sailes_src = app.metafields.sailes.script_url.value -%}
+{%- if sailes_key != blank and sailes_src != blank -%}
+  <script>
+    window.SAILES_SHOPIFY = {
+      root: {{ routes.root_url | json }},
+      afterAdd: {{ block.settings.after_add | json }}
+    };
+  </script>
+  <script src="{{ 'sailes-cart.js' | asset_url }}" defer></script>
+  <script src="{{ sailes_src | escape }}" data-sailes-key="{{ sailes_key | escape }}" async></script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "SAILES assistant",
+  "target": "body",
+  "settings": [
+    {
+      "type": "select",
+      "id": "after_add",
+      "label": "After a shopper adds a product from the chat",
+      "options": [
+        { "value": "stay", "label": "Stay on the page" },
+        { "value": "cart", "label": "Go to the cart" }
+      ],
+      "default": "stay"
+    },
+    {
+      "type": "paragraph",
+      "content": "Colors, greeting and position are set in the SAILES console."
+    }
+  ]
+}
+{% endschema %}

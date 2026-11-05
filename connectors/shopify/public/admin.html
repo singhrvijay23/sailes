@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="shopify-api-key" content="%SHOPIFY_API_KEY%" />
+    <title>SAILES</title>
+    <!-- App Bridge must be the first script. It adds the session token to fetch() calls to this app. -->
+    <script src="https://cdn.shopify.com/shopifycloud/app-bridge.js"></script>
+    <script src="https://cdn.shopify.com/shopifycloud/polaris-2.js"></script>
+    <style>
+      [hidden] { display: none !important; }
+      .stats { display: flex; flex-wrap: wrap; gap: 24px; }
+      .stat strong { display: block; font-size: 20px; }
+    </style>
+  </head>
+  <body>
+    <s-page heading="SAILES sales assistant">
+      <div id="loading"><s-section><s-paragraph>Loading…</s-paragraph></s-section></div>
+      <div id="error" hidden><s-banner tone="critical" heading="Something went wrong"><span id="error-text"></span></s-banner></div>
+      <div id="notice" hidden><s-banner tone="warning"><span id="notice-text"></span></s-banner></div>
+
+      <!-- Not connected yet -->
+      <div id="connect" hidden>
+        <s-section heading="Connect your SAILES account">
+          <s-stack gap="base">
+            <s-paragraph>SAILES answers shopper questions on your storefront, asks follow-up questions like a sales associate and recommends products from your catalog.</s-paragraph>
+            <s-paragraph>Connecting opens SAILES in a new tab. Sign in or create an account (new accounts get a 14-day free trial), then click Allow. Come back to this tab when you are done.</s-paragraph>
+            <s-paragraph color="subdued">SAILES syncs your product catalog, stock and store policies, shows the SAILES assistant on your storefront and reports orders for analytics. It does not access customer payment details.</s-paragraph>
+            <s-stack direction="inline" gap="base">
+              <s-button id="connect-btn" variant="primary">Connect to SAILES</s-button>
+            </s-stack>
+            <div id="connect-wait" hidden><s-paragraph tone="info">Waiting for you to finish in the SAILES tab…</s-paragraph></div>
+          </s-stack>
+        </s-section>
+      </div>
+
+      <!-- Connected -->
+      <div id="connected" hidden>
+        <div id="plan-banner" hidden>
+          <s-banner tone="warning" heading="Your SAILES trial has ended">
+            The assistant is hidden on your storefront until you choose a plan.
+            <s-button slot="secondary-actions" id="billing-btn" target="_blank">Choose a plan</s-button>
+          </s-banner>
+        </div>
+
+        <s-section heading="Account">
+          <s-stack gap="base">
+            <s-stack direction="inline" gap="small-100">
+              <s-text type="strong" id="store-name"></s-text>
+              <s-badge id="plan-badge" tone="info"></s-badge>
+              <s-badge id="active-badge"></s-badge>
+            </s-stack>
+            <s-paragraph color="subdued">Assistant rules, upsell offers, look and billing are managed in the SAILES console.</s-paragraph>
+            <s-stack direction="inline" gap="base">
+              <s-button id="console-btn" target="_blank">Open SAILES console</s-button>
+              <s-button id="reconnect-btn" variant="tertiary">Reconnect</s-button>
+            </s-stack>
+          </s-stack>
+        </s-section>
+
+        <s-section heading="Show the assistant on your store">
+          <s-stack gap="base">
+            <s-paragraph>Turn on the SAILES app embed in your theme. The theme editor opens with it selected: switch it on and click Save.</s-paragraph>
+            <s-paragraph color="subdued">To place the chat inside a page instead of the floating bubble, add the "SAILES chat (inline)" block to any section.</s-paragraph>
+            <s-stack direction="inline" gap="base"><s-button id="theme-btn" variant="primary" target="_top">Open theme editor</s-button></s-stack>
+          </s-stack>
+        </s-section>
+
+        <s-section heading="Product catalog">
+          <s-stack gap="base">
+            <s-paragraph id="sync-summary">Not synced yet.</s-paragraph>
+            <div class="stats" id="sync-stats" hidden>
+              <div class="stat"><strong id="st-created">0</strong>new</div>
+              <div class="stat"><strong id="st-updated">0</strong>updated</div>
+              <div class="stat"><strong id="st-unchanged">0</strong>unchanged</div>
+              <div class="stat"><strong id="st-deleted">0</strong>hidden or removed</div>
+              <div class="stat"><strong id="st-rejected">0</strong>rejected</div>
+            </div>
+            <div id="sync-error" hidden><s-banner tone="critical"><span id="sync-error-text"></span></s-banner></div>
+            <s-paragraph color="subdued">Changes to products and stock sync automatically. A full resync also runs every day.</s-paragraph>
+            <s-stack direction="inline" gap="base"><s-button id="sync-btn">Resync now</s-button></s-stack>
+          </s-stack>
+        </s-section>
+
+        <s-section heading="AI provider">
+          <s-stack gap="base">
+            <s-paragraph id="ai-current"></s-paragraph>
+            <s-select id="ai-mode" label="How SAILES gets its AI">
+              <s-option value="byok">Use my own AI account (OpenAI, Gemini or Claude)</s-option>
+              <s-option value="managed">SAILES AI credits (no AI account needed)</s-option>
+              <s-option value="demo">Demo mode (keyword answers, no AI)</s-option>
+            </s-select>
+            <div id="byok-fields">
+              <s-stack gap="base">
+                <s-select id="ai-provider" label="Provider">
+                  <s-option value="openai">OpenAI</s-option>
+                  <s-option value="gemini">Google Gemini</s-option>
+                  <s-option value="anthropic">Anthropic Claude</s-option>
+                </s-select>
+                <s-select id="ai-model" label="Model"></s-select>
+                <s-password-field id="ai-key" label="API key" autocomplete="off" details="Checked with a test call, then stored encrypted by SAILES. Leave empty to keep the saved key."></s-password-field>
+              </s-stack>
+            </div>
+            <div id="managed-note" hidden><s-paragraph color="subdued">Buy credit packs in the SAILES console under Billing.</s-paragraph></div>
+            <div id="ai-result" hidden><s-banner id="ai-banner"><span id="ai-result-text"></span></s-banner></div>
+            <s-stack direction="inline" gap="base"><s-button id="ai-save" variant="primary">Save AI settings</s-button></s-stack>
+          </s-stack>
+        </s-section>
+      </div>
+    </s-page>
+    <script src="/admin.js" defer></script>
+  </body>
+</html>

@@ -6,6 +6,7 @@
     "dev:api": "pnpm --filter @sailes/api dev",
     "dev:widget": "pnpm --filter @sailes/widget dev",
     "dev:console": "pnpm --filter @sailes/console dev",
+    "dev:shopify": "pnpm --filter @sailes/shopify dev",
     "build": "pnpm -r build",
     "test": "pnpm -r test",
     "typecheck": "pnpm -r typecheck",
