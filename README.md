@@ -15,6 +15,7 @@ Copyright © True North Management Inc. (TNMI), Surrey, British Columbia. All ri
 | `apps/console` | Merchant console (Next.js + Tailwind): sign up, connect AI key, import catalog, rules, branding, test chat, transcripts, analytics, install snippet |
 | `apps/api/src/data/samples` | Three sample stores (wellness, gifts, apparel) for demos, manual testing and the quality eval |
 | `infra` | Database bootstrap SQL |
+| `connectors/woocommerce` | Part 2: the WordPress/WooCommerce plugin (PHP). See its README |
 | `docs/connector-contract.md` | The contract every platform connector (WooCommerce, Shopify, Wix, Webflow) follows: install flow, catalog sync, widget, add to cart, orders |
 
 ## Run it locally
